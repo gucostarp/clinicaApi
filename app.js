@@ -7,7 +7,11 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const pacientesRouter = require('./routes/pacientes');
 
+const { startDatabase } = require('./database');
+
 const app = express();
+
+startDatabase();
 
 app.use(logger('dev'));
 app.use(express.json());
