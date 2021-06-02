@@ -989,6 +989,11 @@ etag@~1.8.1:
   resolved "https://registry.npmjs.org/etag/-/etag-1.8.1.tgz"
   integrity sha1-Qa4u62XvpiJorr/qg6x9eSmbCIc=
 
+express-cli@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/express-cli/-/express-cli-0.0.1.tgz#4b8053cf46ea5b78a50ec8924a174f9c8efca52f"
+  integrity sha1-S4BTz0bqW3ilDsiSShdPnI78pS8=
+
 express@~4.16.1:
   version "4.16.4"
   resolved "https://registry.npmjs.org/express/-/express-4.16.4.tgz"
@@ -1944,7 +1949,7 @@ node-pre-gyp@^0.11.0:
 
 nodemon@^2.0.7:
   version "2.0.7"
-  resolved "https://registry.npmjs.org/nodemon/-/nodemon-2.0.7.tgz"
+  resolved "https://registry.yarnpkg.com/nodemon/-/nodemon-2.0.7.tgz#6f030a0a0ebe3ea1ba2a38f71bf9bab4841ced32"
   integrity sha512-XHzK69Awgnec9UzHr1kc8EomQh4sjTQ8oRf8TsGrSmHDx9/UmiGG9E/mM3BuTfNeFwdNBvrqQq/RHL0xIeyFOA==
   dependencies:
     chokidar "^3.2.2"

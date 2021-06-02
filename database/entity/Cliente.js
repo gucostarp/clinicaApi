@@ -1,7 +1,7 @@
 const { EntitySchema } = require('typeorm');
 
 module.exports = new EntitySchema({
-    name: 'User',
+    name: 'Cliente',
     columns: {
         id: {
             type: Number,
@@ -13,15 +13,27 @@ module.exports = new EntitySchema({
             length: 255,
             nullable: false,
         },
-        username: {
-            type: String,
-            length: 20,
+        cpf: {
+            type: Number,
             nullable: false,
             unique: true,
         },
-        password: {
+        phone: {
+            type: Number,
+            nullable: false,
+        },
+        cellphone: {
+            type: Number,
+            nullable: true,
+        },
+        email: {
             type: String,
-            length: 20,
+            length: 150,
+            nullable: false,
+        },
+        blood: {
+            type: String,
+            length: 3,
             nullable: false,
         },
     },
