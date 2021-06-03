@@ -1,8 +1,10 @@
+require('dotenv/config');
+
 module.exports = {
     jwt: {
         user: {
-            secret: 'sdf3efwefsdfgdfger',
-            expire: 3600000,
+            secret: process.env.SECRET,
+            expire: process.env.EXPIRES,
         }
     }
 }

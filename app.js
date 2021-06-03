@@ -8,13 +8,15 @@ const usersRouter = require('./routes/users');
 const clientesRouter = require('./routes/clientes');
 const atendimentosRouter = require('./routes/clientes');
 const especialistasRouter = require('./routes/especialistas');
+const profissoesRouter = require('./routes/profissoes');
+const prontuariosRouter = require('./routes/prontuarios');
 const authRouter = require('./routes/auth');
 
-const { startDatabase } = require('./database');
+const { startDB } = require('./database');
 
 const app = express();
 
-startDatabase();
+startDB();
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -27,6 +29,8 @@ app.use('/users', usersRouter);
 app.use('/clientes', clientesRouter);
 app.use('/atendimentos', atendimentosRouter);
 app.use('/especialistas', especialistasRouter);
+app.use('/profissoes', profissoesRouter);
+app.use('/prontuarios', prontuariosRouter);
 app.use('/auth', authRouter);
 
 module.exports = app;

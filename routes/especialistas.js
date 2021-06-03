@@ -2,12 +2,12 @@ const express = require('express');
 
 const router = express.Router();
 
-const userController = require('../controller/Especialista');
+const especialistaController = require('../controller/Especialista');
 
 /* GET users listing. */
 router.get('/', async(req, res) => {
     try {
-        const especialistas = await userController.getEspecialistas();
+        const especialistas = await especialistaController.getEspecialistas();
         res.json(especialistas);
     } catch (error) {
         res.status(400).json({ message: 'Erro ao listar especialistas' });
@@ -17,7 +17,7 @@ router.get('/', async(req, res) => {
 /* GET user listing. */
 router.get('/:id', async(req, res) => {
     try {
-        const especialistas = await userController.getEspecialista(req.params.id);
+        const especialistas = await especialistaController.getEspecialista(req.params.id);
         res.json(especialistas);
     } catch (error) {
         res.status(400).json({ message: 'Erro ao listar atendimento' });
@@ -27,7 +27,7 @@ router.get('/:id', async(req, res) => {
 /* DELETE user. */
 router.delete('/:id', async(req, res) => {
     try {
-        const especialistas = await userController.deleteEspecialista(req.params.id);
+        const especialistas = await especialistaController.deleteEspecialista(req.params.id);
         res.json(especialistas);
     } catch (error) {
         res.status(400).json({ message: 'Erro ao deletar atendimento' });
@@ -38,7 +38,7 @@ router.put('/:id', async(req, res) => {
     try {
         const { id } = req.params;
         const fields = req.body;
-        const especialistas = await userController.updateEspecialista(id, fields);
+        const especialistas = await especialistaController.updateEspecialista(id, fields);
         res.json(especialistas);
     } catch (error) {
         res.status(400).json({ message: 'Erro ao atualizar dados do atendimento' });
@@ -48,7 +48,7 @@ router.put('/:id', async(req, res) => {
 /* POST user. */
 router.post('/', async(req, res) => {
     try {
-        const insertedEspecialista = await userController.insertEspecialista(req.body);
+        const insertedEspecialista = await especialistaController.insertEspecialista(req.body);
         res.json(insertedEspecialista);
     } catch (error) {
         res.status(400).json({ message: 'Erro ao criar atendimento' });
