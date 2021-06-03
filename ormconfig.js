@@ -6,13 +6,16 @@ const profissaoEntity = require('./database/entity/Profissao');
 const prontuarioEntity = require('./database/entity/Prontuario');
 const prontuarioHisEntity = require('./database/entity/ProntuarioHis');
 const userEntity = require('./database/entity/User');
+require('dotenv/config');
+
+
 
 module.exports = {
     type: 'postgres',
     synchronize: true,
     host: 'localhost',
-    username: 'postgres',
-    password: 'luframa23',
+    username: process.env.USER,
+    password: process.env.PASSWORD,
     port: '5432',
     logging: true,
     logger: 'simple-console',

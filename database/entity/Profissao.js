@@ -8,9 +8,10 @@ module.exports = new EntitySchema({
             primary: true,
             generated: true,
         },
-        name: {
+        nome: {
             type: String,
             nullable: false,
+            length: 150,
         },
     },
     relations: {

@@ -13,7 +13,6 @@ const login = async(loginData) => {
         return {
             mensagem: 'Login ou senha inválidos'
         }
-
     }
 }
 

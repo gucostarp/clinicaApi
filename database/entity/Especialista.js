@@ -21,17 +21,17 @@ module.exports = new EntitySchema({
         },
         telefone: {
             type: String,
-            length: 14,
+            length: 11,
             nullable: true,
         },
         celular: {
             type: String,
-            length: 14,
+            length: 11,
             nullable: false,
         },
         email: {
             type: String,
-            length: 50,
+            length: 150,
             unique: true,
         },
     },

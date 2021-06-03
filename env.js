@@ -1,7 +1,7 @@
 module.exports = {
     jwt: {
         user: {
-            secret: 'pintebinha',
+            secret: 'sdf3efwefsdfgdfger',
             expire: 3600000,
         }
     }
