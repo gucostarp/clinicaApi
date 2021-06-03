@@ -1,7 +1,7 @@
 const { EntitySchema } = require('typeorm');
 
 module.exports = new EntitySchema({
-    name: 'User',
+    name: 'Profissao',
     columns: {
         id: {
             type: Number,
@@ -10,19 +10,14 @@ module.exports = new EntitySchema({
         },
         name: {
             type: String,
-            length: 255,
             nullable: false,
         },
-        username: {
-            type: String,
-            length: 20,
-            nullable: false,
-            unique: true,
-        },
-        password: {
-            type: String,
-            length: 255,
-            nullable: false,
+    },
+    relations: {
+        especialista: {
+            target: 'Especialista',
+            type: 'one-to-many',
+            nullable: true,
         },
     },
 });
