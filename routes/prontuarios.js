@@ -3,6 +3,9 @@ const express = require('express');
 const router = express.Router();
 
 const prontuarioController = require('../controller/Prontuario');
+const authMiddleware = require('../Middleware/auth');
+
+router.use(authMiddleware);
 
 /* GET users listing. */
 router.get('/', async(req, res) => {

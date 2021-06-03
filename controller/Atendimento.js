@@ -1,12 +1,9 @@
 const { getConnection } = require('typeorm');
 
-const getAtendimentos = async() => {
-
+const getAtendimentos = async(filter) => {
     const findArguments = { relations: ['cliente', 'especialista'] };
 
-    // Verifica se existe algum filtro para seleção
-    if (dataAtendimentos) { findArguments.where = dataAtendimentos; }
-
+    if (filter) { findArguments.where = filter; }
     const atendimentoRepository = getConnection().getRepository('Atendimento');
     const atendimentos = await atendimentoRepository.find(findArguments);
     return (atendimentos);
@@ -17,17 +14,18 @@ const getAtendimento = async(id) => {
     const atendimentoRepository = getConnection().getRepository('Atendimento');
     const atendimento = await atendimentoRepository.findOne(id, { relations: ['cliente', 'especialista'] });
     return (atendimento);
-
 };
+
 const updateAtendimento = async(id, fields) => {
 
-    const atendimentoRepository = getConnection().getRepository('Atendimento');
+    const atendimentoRepository = getConnection().getR
+    epository('Atendimento');
     await atendimentoRepository.update(id, fields, { relations: ['cliente', 'especialista'] });
     return getAtendimento(id);
 };
 
-
 const deleteAtendimento = async(id) => {
+
     const atendimentoRepository = getConnection().getRepository('Atendimento');
     await atendimentoRepository.delete(id);
     return { message: 'Atendimento excluído' };

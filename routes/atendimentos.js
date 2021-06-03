@@ -4,6 +4,10 @@ const router = express.Router();
 
 const userController = require('../controller/Atendimento');
 
+const authMiddleware = require('../Middleware/auth');
+
+router.use(authMiddleware);
+
 /* GET users listing. */
 router.get('/', async(req, res) => {
     try {
