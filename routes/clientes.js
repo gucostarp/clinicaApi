@@ -7,8 +7,6 @@ router.use(authMiddleware);
 
 require('dotenv/config');
 
-
-/* GET users listing. */
 router.get('/', async(req, res) => {
     try {
         const clientes = await userController.getClientes();
@@ -18,7 +16,6 @@ router.get('/', async(req, res) => {
     }
 });
 
-/* GET user listing. */
 router.get('/:id', async(req, res) => {
     try {
         const clientes = await userController.getCliente(req.params.id);
@@ -28,7 +25,6 @@ router.get('/:id', async(req, res) => {
     }
 });
 
-/* DELETE user. */
 router.delete('/:id', async(req, res) => {
     try {
         const clientes = await userController.deleteCliente(req.params.id);
@@ -37,7 +33,7 @@ router.delete('/:id', async(req, res) => {
         res.status(400).json({ message: 'Erro ao deletar cliente' });
     }
 });
-/* UPDATE user. */
+
 router.put('/:id', async(req, res) => {
     try {
         const { id } = req.params;
@@ -49,7 +45,6 @@ router.put('/:id', async(req, res) => {
     }
 });
 
-/* POST user. */
 router.post('/', async(req, res) => {
     try {
         const insertedCliente = await userController.insertCliente(req.body);

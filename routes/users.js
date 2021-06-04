@@ -5,7 +5,6 @@ const authMiddleware = require('../Middleware/auth');
 
 router.use(authMiddleware);
 
-/* GET users listing. */
 router.get('/', async(req, res) => {
     try {
         const users = await userController.getUsers();
@@ -15,7 +14,6 @@ router.get('/', async(req, res) => {
     }
 });
 
-/* GET user listing. */
 router.get('/:id', async(req, res) => {
     try {
         const users = await userController.getUser(req.params.id);
@@ -25,7 +23,6 @@ router.get('/:id', async(req, res) => {
     }
 });
 
-/* DELETE user. */
 router.delete('/:id', async(req, res) => {
     try {
         const users = await userController.deleteUser(req.params.id);
@@ -34,7 +31,7 @@ router.delete('/:id', async(req, res) => {
         res.status(400).json({ message: 'Erro ao deletar usuário' });
     }
 });
-/* UPDATE user. */
+
 router.put('/:id', async(req, res) => {
     try {
         const { id } = req.params;
@@ -46,7 +43,6 @@ router.put('/:id', async(req, res) => {
     }
 });
 
-/* POST user. */
 router.post('/', async(req, res) => {
     try {
         const insertedUser = await userController.insertUser(req.body);

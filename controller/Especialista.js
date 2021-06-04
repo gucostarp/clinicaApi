@@ -2,7 +2,6 @@ const { getConnection } = require('typeorm');
 
 const getEspecialistas = async() => {
 
-
     const especialistaRepository = getConnection().getRepository('Especialista');
     const especialistas = await especialistaRepository.find({ relations: ['profissao'] });
     return (especialistas);
@@ -15,6 +14,7 @@ const getEspecialista = async(id) => {
     return (especialista);
 
 };
+
 const updateEspecialista = async(id, fields) => {
 
     const especialistaRepository = getConnection().getRepository('Especialista');
@@ -35,7 +35,6 @@ const insertEspecialista = async(especialista) => {
     const insertedEspecialista = await especialistaRepository.save(especialista);
     return insertedEspecialista;
 };
-
 
 module.exports = {
     getEspecialistas,

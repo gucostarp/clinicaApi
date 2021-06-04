@@ -38,7 +38,6 @@ const insertAtendimento = async(atendimento) => {
     return insertedAtendimento;
 };
 
-
 module.exports = {
     getAtendimentos,
     getAtendimento,

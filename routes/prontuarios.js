@@ -7,7 +7,6 @@ const authMiddleware = require('../Middleware/auth');
 
 router.use(authMiddleware);
 
-/* GET users listing. */
 router.get('/', async(req, res) => {
     try {
         const prontuarios = await prontuarioController.getProntuarios();
@@ -17,10 +16,6 @@ router.get('/', async(req, res) => {
     }
 });
 
-
-
-
-/* GET user listing. */
 router.get('/:id', async(req, res) => {
     try {
         const prontuarios = await prontuarioController.getProntuario(req.params.id);
@@ -30,7 +25,6 @@ router.get('/:id', async(req, res) => {
     }
 });
 
-/* DELETE user. */
 router.delete('/:id', async(req, res) => {
     try {
         const prontuarios = await prontuarioController.deleteProntuario(req.params.id);
@@ -39,7 +33,7 @@ router.delete('/:id', async(req, res) => {
         res.status(400).json({ message: 'Erro ao deletar prontuario' });
     }
 });
-/* UPDATE user. */
+
 router.put('/:id', async(req, res) => {
     try {
         const { id } = req.params;
@@ -51,7 +45,6 @@ router.put('/:id', async(req, res) => {
     }
 });
 
-/* POST user. */
 router.post('/', async(req, res) => {
     try {
         const insertedProntuario = await prontuarioController.insertProntuario(req.body);

@@ -28,7 +28,6 @@ const insertCliente = async(cliente) => {
     const clienteRepository = getConnection().getRepository('Cliente');
     const insertedCliente = await clienteRepository.save(cliente);
     return insertedCliente;
-
 };
 
 module.exports = {

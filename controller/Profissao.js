@@ -11,15 +11,14 @@ const getProfissao = async(id) => {
     const profissaoRepository = getConnection().getRepository('Profissao');
     const especialista = await profissaoRepository.findOne(id);
     return (especialista);
-
 };
+
 const updateProfissao = async(id, fields) => {
 
     const profissaoRepository = getConnection().getRepository('Profissao');
     await profissaoRepository.update(id, fields);
     return getProfissao(id);
 };
-
 
 const deleteProfissao = async(id) => {
     const profissaoRepository = getConnection().getRepository('Profissao');
@@ -33,7 +32,6 @@ const insertProfissao = async(profissao) => {
     const insertedProfissao = await profissaoRepository.save(profissao);
     return insertedProfissao;
 };
-
 
 module.exports = {
     getProfissoes,

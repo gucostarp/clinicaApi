@@ -16,7 +16,4 @@ const login = async(loginData) => {
     }
 }
 
-
-module.exports = {
-    login,
-};
+module.exports = { login };
