@@ -1,60 +1,57 @@
-const { getConnection } = require('typeorm');
+const userRepository = require('../services/User')
 
-const bcrypt = require('bcrypt');
-
-const getUsers = async () => {
-  const userRepository = getConnection().getRepository('User');
-  const users = await userRepository.find();
-  return users;
+const get = async(req, res) => {
+    try {
+        const users = await userRepository.list(req.body);
+        res.json(users);
+    } catch (error) {
+        res.status(400).json({ message: 'Erro ao listar usuários' });
+    }
 };
 
-const getUser = async (id) => {
-  const userRepository = getConnection().getRepository('User');
-  const users = await userRepository.findOne(id);
-  return users;
+const getOne = async(req, res) => {
+    try {
+        const users = await userRepository.list(req.params.id);
+        res.json(users);
+    } catch (error) {
+        res.status(400).json({ message: 'Erro ao listar usuário' });
+    }
 };
 
-const updateUser = async (id, fields) => {
-  const userRepository = getConnection().getRepository('User');
-
-  const fields2 = fields;
-
-  if (!fields.password) {
-    const hash = bcrypt.hashSync(fields.password, 10);
-    fields2.password = hash;
-  }
-
-  await userRepository.update(id, fields2);
-
-  const updatedUser = getUser(id);
-  delete updatedUser.password;
-
-  return updatedUser;
+const deleteOne = async(req, res) => {
+    try {
+        const users = await userRepository(req.params.id);
+        res.json(users);
+    } catch (error) {
+        res.status(400).json({ message: 'Erro ao deletar usuário' });
+    }
 };
 
-const deleteUser = async (id) => {
-  const userRepository = getConnection().getRepository('User');
-  await userRepository.delete(id);
-  return { message: 'Usuário excluído' };
+const update = async(req, res) => {
+    try {
+        const { id } = req.params;
+        const fields = req.body;
+        const users = await userRepository.update(id, fields);
+        res.json(users);
+    } catch (error) {
+        res.status(400).json({ message: 'Erro ao atualizar dados do usuário' });
+    }
 };
 
-const insertUser = async (user) => {
-  const userRepository = getConnection().getRepository('User');
-  const hash = bcrypt.hashSync(user.password, 10);
-
-  const user2 = user;
-  user2.password = hash;
-
-  const insertedUser = await userRepository.save(user2);
-  delete insertedUser.password;
-
-  return insertedUser;
+const insert = async(req, res) => {
+    try {
+        const insertedUser = await userRepository.create(req.body);
+        res.json(insertedUser);
+    } catch (error) {
+        res.status(400).json({ message: 'Erro ao criar usuário' });
+    }
 };
+
 
 module.exports = {
-  updateUser,
-  deleteUser,
-  getUser,
-  getUsers,
-  insertUser,
+    get,
+    getOne,
+    deleteOne,
+    update,
+    insert,
 };

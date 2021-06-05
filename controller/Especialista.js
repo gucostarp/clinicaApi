@@ -1,45 +1,57 @@
-const { getConnection } = require('typeorm');
+const especialistaRepository = require('../services/Especialista')
 
-const getEspecialistas = async() => {
 
-    const especialistaRepository = getConnection().getRepository('Especialista');
-    const especialistas = await especialistaRepository.find({ relations: ['profissao'] });
-    return (especialistas);
+const get = async(req, res) => {
+    try {
+        const especialistas = await especialistaRepository.list(req.body);
+        res.json(especialistas);
+    } catch (error) {
+        res.status(400).json({ message: 'Erro ao listar especialistas' });
+    }
 };
 
-const getEspecialista = async(id) => {
-
-    const especialistaRepository = getConnection().getRepository('Especialista');
-    const especialista = await especialistaRepository.findOne(id, { relations: ['profissao'] });
-    return (especialista);
-
+const getOne = async(req, res) => {
+    try {
+        const especialistas = await especialistaRepository.list(req.params.id);
+        res.json(especialistas);
+    } catch (error) {
+        res.status(400).json({ message: 'Erro ao listar atendimento' });
+    }
 };
 
-const updateEspecialista = async(id, fields) => {
-
-    const especialistaRepository = getConnection().getRepository('Especialista');
-    await especialistaRepository.update(id, fields);
-    return getEspecialista(id);
+const deleteOne = async(req, res) => {
+    try {
+        const especialistas = await especialistaRepository.delete(req.params.id);
+        res.json(especialistas);
+    } catch (error) {
+        res.status(400).json({ message: 'Erro ao deletar atendimento' });
+    }
 };
 
-
-const deleteEspecialista = async(id) => {
-    const especialistaRepository = getConnection().getRepository('Especialista');
-    await especialistaRepository.delete(id);
-    return { message: 'Especialista excluído' };
+const update = async(req, res) => {
+    try {
+        const { id } = req.params;
+        const fields = req.body;
+        const especialistas = await especialistaRepository.update(id, fields);
+        res.json(especialistas);
+    } catch (error) {
+        res.status(400).json({ message: 'Erro ao atualizar dados do atendimento' });
+    }
 };
 
-const insertEspecialista = async(especialista) => {
-
-    const especialistaRepository = getConnection().getRepository('Especialista');
-    const insertedEspecialista = await especialistaRepository.save(especialista);
-    return insertedEspecialista;
+const insert = async(req, res) => {
+    try {
+        const insertedEspecialista = await especialistaRepository.create(req.body);
+        res.json(insertedEspecialista);
+    } catch (error) {
+        res.status(400).json({ message: 'Erro ao criar atendimento' });
+    }
 };
 
 module.exports = {
-    getEspecialistas,
-    getEspecialista,
-    insertEspecialista,
-    updateEspecialista,
-    deleteEspecialista,
+    get,
+    getOne,
+    deleteOne,
+    update,
+    insert
 };

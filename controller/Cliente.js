@@ -1,39 +1,60 @@
-const { getConnection } = require('typeorm');
+const clienteRepository = require('../services/Cliente');
+const prontuarioRepository = require('../services/Prontuario')
 
-const getClientes = async() => {
-    const clienteRepository = getConnection().getRepository('Cliente');
-    const clientes = await clienteRepository.find({ relations: ['endereco'] });
-    return clientes;
+const get = async(req, res) => {
+    try {
+        const clientes = await clienteRepository.list(req.body);
+        res.json(clientes);
+    } catch (error) {
+        res.status(400).json({ message: 'Erro ao listar clientes' });
+    }
 };
 
-const getCliente = async(id) => {
-    const clienteRepository = getConnection().getRepository('Cliente');
-    const clientes = await clienteRepository.findOne(id);
-    return clientes;
+const getOne = async(req, res) => {
+    try {
+        const clientes = await clienteRepository.list(req.params.id);
+        res.json(clientes);
+    } catch (error) {
+        res.status(400).json({ message: 'Erro ao listar cliente' });
+    }
 };
 
-const updateCliente = async(id, fields) => {
-    const clienteRepository = getConnection().getRepository('Cliente');
-    await clienteRepository.update(id, fields);
-    return getCliente(id);
+const deleteOne = async(req, res) => {
+    try {
+        const clientes = await clienteRepository.delete(req.params.id);
+        res.json(clientes);
+    } catch (error) {
+        res.status(400).json({ message: 'Erro ao deletar cliente' });
+    }
 };
 
-const deleteCliente = async(id) => {
-    const clienteRepository = getConnection().getRepository('Cliente');
-    await clienteRepository.delete(id);
-    return { message: 'Cliente excluído' };
+const update = async(req, res) => {
+    try {
+        const { id } = req.params;
+        const fields = req.body;
+        const clientes = await clienteRepository.update(id, fields);
+        res.json(clientes);
+    } catch (error) {
+        res.status(400).json({ message: 'Erro ao atualizar dados do cliente' });
+    }
 };
 
-const insertCliente = async(cliente) => {
-    const clienteRepository = getConnection().getRepository('Cliente');
-    const insertedCliente = await clienteRepository.save(cliente);
-    return insertedCliente;
+const insert = async(req, res) => {
+    try {
+        const insertedCliente = await clienteRepository.create(req.body);
+        const prontuario = await prontuarioRepository.create({ cliente: insertedCliente.id })
+        const resultado = (insertedCliente, prontuario)
+        res.json(resultado);
+    } catch (error) {
+        res.status(400).json({ message: 'Erro ao criar cliente' });
+    }
 };
+
 
 module.exports = {
-    updateCliente,
-    deleteCliente,
-    getClientes,
-    getCliente,
-    insertCliente,
+    get,
+    getOne,
+    deleteOne,
+    update,
+    insert
 };

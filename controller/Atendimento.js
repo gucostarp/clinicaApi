@@ -1,47 +1,56 @@
-const { getConnection } = require('typeorm');
+const atendimentoRepository = require('../services/Atendimento');
 
-const getAtendimentos = async(filter) => {
-    const findArguments = { relations: ['cliente', 'especialista'] };
-
-    if (filter) { findArguments.where = filter; }
-    const atendimentoRepository = getConnection().getRepository('Atendimento');
-    const atendimentos = await atendimentoRepository.find(findArguments);
-    return (atendimentos);
+const get = async(req, res) => {
+    try {
+        const atendimentos = await atendimentoRepository.list(req.body);
+        res.json(atendimentos);
+    } catch (error) {
+        res.status(400).json({ message: 'Erro ao listar atendimentos' });
+    }
 };
 
-const getAtendimento = async(id) => {
-
-    const atendimentoRepository = getConnection().getRepository('Atendimento');
-    const atendimento = await atendimentoRepository.findOne(id, { relations: ['cliente', 'especialista'] });
-    return (atendimento);
+const getOne = async(req, res) => {
+    try {
+        const atendimentos = await atendimentoRepository.list(req.params.id);
+        res.json(atendimentos);
+    } catch (error) {
+        res.status(400).json({ message: 'Erro ao listar atendimento' });
+    }
 };
 
-const updateAtendimento = async(id, fields) => {
-
-    const atendimentoRepository = getConnection().getR
-    epository('Atendimento');
-    await atendimentoRepository.update(id, fields, { relations: ['cliente', 'especialista'] });
-    return getAtendimento(id);
+const deleteOne = async(req, res) => {
+    try {
+        const atendimentos = await atendimentoRepository.delete(req.params.id);
+        res.json(atendimentos);
+    } catch (error) {
+        res.status(400).json({ message: 'Erro ao deletar atendimento' });
+    }
 };
 
-const deleteAtendimento = async(id) => {
-
-    const atendimentoRepository = getConnection().getRepository('Atendimento');
-    await atendimentoRepository.delete(id);
-    return { message: 'Atendimento excluído' };
+const update = async(req, res) => {
+    try {
+        const { id } = req.params;
+        const fields = req.body;
+        const atendimentos = await atendimentoRepository.update(id, fields);
+        res.json(atendimentos);
+    } catch (error) {
+        res.status(400).json({ message: 'Erro ao atualizar dados do atendimento' });
+    }
 };
 
-const insertAtendimento = async(atendimento) => {
-
-    const atendimentoRepository = getConnection().getRepository('Atendimento');
-    const insertedAtendimento = await atendimentoRepository.save(atendimento);
-    return insertedAtendimento;
+const insert = async(req, res) => {
+    try {
+        const insertedAtendimento = await atendimentoRepository.create(req.body);
+        res.json(insertedAtendimento);
+    } catch (error) {
+        res.status(400).json({ message: 'Erro ao criar atendimento' });
+    }
 };
 
 module.exports = {
-    getAtendimentos,
-    getAtendimento,
-    insertAtendimento,
-    updateAtendimento,
-    deleteAtendimento,
+    get,
+    getOne,
+    deleteOne,
+    update,
+    insert,
 };
