@@ -1,42 +1,57 @@
-const { getConnection } = require('typeorm');
+const profissaoRepository = require('../services/Profissao')
 
-const getProfissoes = async() => {
-    const profissaoRepository = getConnection().getRepository('Profissao');
-    const profissoes = await profissaoRepository.find();
-    return (profissoes);
+const get = async(req, res) => {
+    try {
+        const profissoes = await profissaoRepository.list(req.body);
+        res.json(profissoes);
+    } catch (error) {
+        res.status(400).json({ message: 'Erro ao listar profissões' });
+    }
 };
 
-const getProfissao = async(id) => {
-
-    const profissaoRepository = getConnection().getRepository('Profissao');
-    const especialista = await profissaoRepository.findOne(id);
-    return (especialista);
+const getOne = async(req, res) => {
+    try {
+        const profissoes = await profissaoRepository.list(req.params.id);
+        res.json(profissoes);
+    } catch (error) {
+        res.status(400).json({ message: 'Erro ao listar profissão' });
+    }
 };
 
-const updateProfissao = async(id, fields) => {
-
-    const profissaoRepository = getConnection().getRepository('Profissao');
-    await profissaoRepository.update(id, fields);
-    return getProfissao(id);
+const deleteone = async(req, res) => {
+    try {
+        const profissoes = await profissaoRepository.delete(req.params.id);
+        res.json(profissoes);
+    } catch (error) {
+        res.status(400).json({ message: 'Erro ao deletar profissão' });
+    }
 };
 
-const deleteProfissao = async(id) => {
-    const profissaoRepository = getConnection().getRepository('Profissao');
-    await profissaoRepository.delete(id);
-    return { message: 'Profissao excluído' };
+const update = async(req, res) => {
+    try {
+        const { id } = req.params;
+        const fields = req.body;
+        const profissoes = await profissaoRepository(id, fields);
+        res.json(profissoes);
+    } catch (error) {
+        res.status(400).json({ message: 'Erro ao atualizar dados da profissão' });
+    }
 };
 
-const insertProfissao = async(profissao) => {
-
-    const profissaoRepository = getConnection().getRepository('Profissao');
-    const insertedProfissao = await profissaoRepository.save(profissao);
-    return insertedProfissao;
+const insert = async(req, res) => {
+    try {
+        const insertedProfissao = await profissaoRepository.create(req.body);
+        res.json(insertedProfissao);
+    } catch (error) {
+        res.status(400).json({ message: 'Erro ao criar profissão' });
+    }
 };
+
 
 module.exports = {
-    getProfissoes,
-    getProfissao,
-    insertProfissao,
-    updateProfissao,
-    deleteProfissao,
+    get,
+    getOne,
+    deleteone,
+    update,
+    insert
 };
