@@ -5,14 +5,14 @@ const authMiddleware = require('../Middleware/auth');
 
 
 router.post('/auth/', Controllers.Auth.login);
+router.post('/users', Controllers.User.insert);
 
 router.use(authMiddleware);
 
-router.get('/users', Controllers.User.get);
+router.get('/users/', Controllers.User.get);
 router.get('/users/:id', Controllers.User.getOne);
 router.delete('/users/:id', Controllers.User.deleteOne);
 router.put('/users/:id', Controllers.User.update);
-router.post('/users/', Controllers.User.insert);
 
 
 router.get('/atendimento', Controllers.Atendimento.get);

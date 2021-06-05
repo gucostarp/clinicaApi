@@ -9,7 +9,7 @@ const { startDB } = require('./database');
 
 const app = express();
 
-startDB();
+// startDB();
 
 app.use(logger('dev'));
 app.use(express.json());

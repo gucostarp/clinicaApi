@@ -1,18 +1,23 @@
-const { getConnection } = require('typeorm');
+const userRepository = require('../services/Auth')
 const JwToken = require('../helpers/jwToken')
 const bcrypt = require('bcrypt');
 
-const login = async(loginData) => {
-    const userRepository = getConnection().getRepository('User');
-    const user = await userRepository.findOne({ username: loginData.username });
-    if (user && bcrypt.compareSync(loginData.password, user.password)) {
-        delete user.password;
-        user.token = JwToken.makeToken(user);
-        return user;
-    } else {
-        return {
-            mensagem: 'Login ou senha inválidos'
+async function login(req, res) {
+    const { username, password } = req.body;
+    try {
+        const user = await userRepository.getOne({ username });
+
+        if (user && bcrypt.compare(password, user.password)) {
+            delete user.password;
+            user.token = JwToken.makeToken(user);
+            return res.json(user);
         }
+        return res.send({
+            message: 'Login ou senha inválidos',
+        });
+    } catch (erro) {
+        console.log(erro)
+        return res.status(400).json(erro);
     }
 }
 
