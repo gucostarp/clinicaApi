@@ -1,49 +1,52 @@
 const userRepository = require('../services/User')
 
-const get = async(req, res) => {
+get = async(req, res) => {
     try {
-        const users = await userRepository.list(req.body);
+        const users = await userRepository.getUsers(req.body);
         res.json(users);
     } catch (error) {
         res.status(400).json({ message: 'Erro ao listar usuários' });
     }
 };
 
-const getOne = async(req, res) => {
+getOne = async(req, res) => {
     try {
-        const users = await userRepository.list(req.params.id);
+        const users = await userRepository.getUser(req.params.id);
         res.json(users);
     } catch (error) {
         res.status(400).json({ message: 'Erro ao listar usuário' });
     }
 };
 
-const deleteOne = async(req, res) => {
+deleteOne = async(req, res) => {
     try {
-        const users = await userRepository(req.params.id);
+        const users = await userRepository.deleteOne(req.params.id);
         res.json(users);
     } catch (error) {
         res.status(400).json({ message: 'Erro ao deletar usuário' });
     }
 };
 
-const update = async(req, res) => {
+update = async(req, res) => {
     try {
         const { id } = req.params;
         const fields = req.body;
-        const users = await userRepository.update(id, fields);
+        const users = await userRepository.updateUser(id, fields);
         res.json(users);
     } catch (error) {
         res.status(400).json({ message: 'Erro ao atualizar dados do usuário' });
     }
 };
 
-const insert = async(req, res) => {
+insert = async(req, res) => {
     try {
-        const insertedUser = await userRepository.create(req.body);
+        const insertedUser = await userRepository.insertUser(req.body);
         res.json(insertedUser);
     } catch (error) {
+
+        console.log(error)
         res.status(400).json({ message: 'Erro ao criar usuário' });
+
     }
 };
 

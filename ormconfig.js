@@ -17,7 +17,7 @@ module.exports = {
     username: process.env.USER,
     password: process.env.PASSWORD,
     port: '5432',
-    logging: false,
+    logging: true,
     logger: 'simple-console',
     database: 'clinica_api',
     entities: [

@@ -18,7 +18,7 @@ const getOne = async(req, res) => {
     }
 };
 
-const deleteone = async(req, res) => {
+const deleteOne = async(req, res) => {
     try {
         const profissoes = await profissaoRepository.delete(req.params.id);
         res.json(profissoes);
@@ -51,7 +51,7 @@ const insert = async(req, res) => {
 module.exports = {
     get,
     getOne,
-    deleteone,
+    deleteOne,
     update,
     insert
 };
