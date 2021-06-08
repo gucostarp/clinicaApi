@@ -20,7 +20,7 @@ getOne = async(req, res) => {
 
 deleteOne = async(req, res) => {
     try {
-        const users = await userRepository.deleteOne(req.params.id);
+        const users = await userRepository.deleteUser(req.params.id);
         res.json(users);
     } catch (error) {
         res.status(400).json({ message: 'Erro ao deletar usuário' });
@@ -44,12 +44,10 @@ insert = async(req, res) => {
         res.json(insertedUser);
     } catch (error) {
 
-        console.log(error)
         res.status(400).json({ message: 'Erro ao criar usuário' });
 
     }
 };
-
 
 module.exports = {
     get,

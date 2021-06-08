@@ -7,8 +7,8 @@ module.exports = {
 
         try {
 
-            const prontuarioHisRepository = getRepository('Prontuario');
-            const prontuarios = await prontuarioHisRepository.find({ relations: ['especialista, prontuario'] });
+            const prontuarioHistoricoRepository = getRepository('Prontuario');
+            const prontuarios = await prontuarioHistoricoRepository.find({ relations: ['especialista, prontuario'] });
             return (prontuarios);
         } finally {
             connectDb.close()
@@ -20,8 +20,8 @@ module.exports = {
 
         try {
 
-            const prontuarioHisRepository = getRepository('Prontuario');
-            const prontuario = await prontuarioHisRepository.findOne(id, { relations: ['especialista, prontuario'] });
+            const prontuarioHistoricoRepository = getRepository('Prontuario');
+            const prontuario = await prontuarioHistoricoRepository.findOne(id, { relations: ['especialista, prontuario'] });
             return (prontuario);
         } finally {
             connectDb.close()
@@ -33,8 +33,8 @@ module.exports = {
 
         try {
 
-            const prontuarioHisRepository = getRepository('Prontuario');
-            await prontuarioHisRepository.update(id, fields, { relations: ['especialista, prontuario'] });
+            const prontuarioHistoricoRepository = getRepository('Prontuario');
+            await prontuarioHistoricoRepository.update(id, fields, { relations: ['especialista, prontuario'] });
             return getProntuario(id);
         } finally {
             connectDb.close()
@@ -45,8 +45,8 @@ module.exports = {
         const connectDb = await createConnection();
 
         try {
-            const prontuarioHisRepository = getRepository('Prontuario');
-            await prontuarioHisRepository.delete(id);
+            const prontuarioHistoricoRepository = getRepository('Prontuario');
+            await prontuarioHistoricoRepository.delete(id);
             return { message: 'Prontuario excluído' };
         } finally {
             connectDb.close()
@@ -58,8 +58,8 @@ module.exports = {
 
         try {
 
-            const prontuarioHisRepository = getRepository('Prontuario');
-            const insertedProntuario = await prontuarioHisRepository.save(prontuario);
+            const prontuarioHistoricoRepository = getRepository('Prontuario');
+            const insertedProntuario = await prontuarioHistoricoRepository.save(prontuario);
             return insertedProntuario;
         } finally {
             connectDb.close()

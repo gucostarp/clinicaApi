@@ -4,7 +4,7 @@ const Cliente = require('./Cliente');
 const Especialista = require('./Especialista');
 const Profissao = require('./Profissao');
 const Prontuario = require('./Prontuario');
-const ProntuarioHis = require('./ProntuarioHis');
+const ProntuarioHistorico = require('./ProntuarioHistorico');
 const User = require('./User');
 
 const Controllers = {
@@ -14,7 +14,7 @@ const Controllers = {
     Especialista,
     Profissao,
     Prontuario,
-    ProntuarioHis,
+    ProntuarioHistorico,
     User
 }
 

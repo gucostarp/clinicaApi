@@ -20,9 +20,9 @@ module.exports = new EntitySchema({
             joinColumn: 'true',
             cascade: false,
         },
-        prontuarioHis: {
+        prontuarioHistorico: {
             type: 'one-to-many',
-            target: 'ProntuarioHis',
+            target: 'ProntuarioHistorico',
             cascade: true,
         },
     },

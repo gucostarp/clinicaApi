@@ -4,7 +4,7 @@ const enderecoEntity = require('./database/entity/Endereco');
 const especialistaEntity = require('./database/entity/Especialista');
 const profissaoEntity = require('./database/entity/Profissao');
 const prontuarioEntity = require('./database/entity/Prontuario');
-const prontuarioHisEntity = require('./database/entity/ProntuarioHis');
+const prontuarioHistoricoEntity = require('./database/entity/ProntuarioHistorico');
 const userEntity = require('./database/entity/User');
 require('dotenv/config');
 
@@ -28,7 +28,7 @@ module.exports = {
         especialistaEntity,
         profissaoEntity,
         prontuarioEntity,
-        prontuarioHisEntity
+        prontuarioHistoricoEntity
     ],
     migrations: ['./database/migration/*.js'],
     cli: {

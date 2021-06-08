@@ -3,7 +3,7 @@ const especialistaRepository = require('../services/Especialista')
 
 const get = async(req, res) => {
     try {
-        const especialistas = await especialistaRepository.list(req.body);
+        const especialistas = await especialistaRepository.getEspecialistas(req.body);
         res.json(especialistas);
     } catch (error) {
         res.status(400).json({ message: 'Erro ao listar especialistas' });
@@ -12,19 +12,19 @@ const get = async(req, res) => {
 
 const getOne = async(req, res) => {
     try {
-        const especialistas = await especialistaRepository.list(req.params.id);
+        const especialistas = await especialistaRepository.getEspecialista(req.params.id);
         res.json(especialistas);
     } catch (error) {
-        res.status(400).json({ message: 'Erro ao listar atendimento' });
+        res.status(400).json({ message: 'Erro ao listar especialista' });
     }
 };
 
 const deleteOne = async(req, res) => {
     try {
-        const especialistas = await especialistaRepository.delete(req.params.id);
+        const especialistas = await especialistaRepository.deleteEspecialista(req.params.id);
         res.json(especialistas);
     } catch (error) {
-        res.status(400).json({ message: 'Erro ao deletar atendimento' });
+        res.status(400).json({ message: 'Erro ao deletar especialista' });
     }
 };
 
@@ -32,19 +32,20 @@ const update = async(req, res) => {
     try {
         const { id } = req.params;
         const fields = req.body;
-        const especialistas = await especialistaRepository.update(id, fields);
+        const especialistas = await especialistaRepository.updateEspecialista(id, fields);
         res.json(especialistas);
     } catch (error) {
-        res.status(400).json({ message: 'Erro ao atualizar dados do atendimento' });
+        res.status(400).json({ message: 'Erro ao atualizar dados do especialista' });
     }
 };
 
 const insert = async(req, res) => {
     try {
-        const insertedEspecialista = await especialistaRepository.create(req.body);
+        const insertedEspecialista = await especialistaRepository.insertEspecialista(req.body);
         res.json(insertedEspecialista);
     } catch (error) {
-        res.status(400).json({ message: 'Erro ao criar atendimento' });
+        console.log(error)
+        res.status(400).json({ message: 'Erro ao inserir especialista' });
     }
 };
 
