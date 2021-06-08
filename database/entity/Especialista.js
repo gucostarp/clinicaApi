@@ -1,4 +1,5 @@
 const { EntitySchema } = require('typeorm');
+const Modelo = require('./Modelo');
 
 module.exports = new EntitySchema({
     name: 'Especialista',
@@ -33,6 +34,7 @@ module.exports = new EntitySchema({
             length: 150,
             unique: true,
         },
+        ...Modelo,
     },
     relations: {
         endereco: {
