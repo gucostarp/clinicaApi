@@ -16,32 +16,56 @@ module.exports = {
     },
 
     async getEspecialista(id) {
+        const connectDb = await createConnection();
 
-        const especialistaRepository = getRepository('Especialista');
-        const especialista = await especialistaRepository.findOne(id, { relations: ['profissao'] });
-        return (especialista);
+        try {
+
+            const especialistaRepository = getRepository('Especialista');
+            const especialista = await especialistaRepository.findOne(id, { relations: ['profissao'] });
+            return (especialista);
+        } finally {
+            connectDb.close()
+        }
 
     },
 
     async updateEspecialista(id, fields) {
+        const connectDb = await createConnection();
 
-        const especialistaRepository = getRepository('Especialista');
-        await especialistaRepository.update(id, fields);
-        return getEspecialista(id);
+        try {
+
+            const especialistaRepository = getRepository('Especialista');
+            await especialistaRepository.update(id, fields);
+            return getEspecialista(id);
+        } finally {
+            connectDb.close()
+        }
     },
 
 
     async deleteEspecialista(id) {
-        const especialistaRepository = getRepository('Especialista');
-        await especialistaRepository.delete(id);
-        return { message: 'Especialista excluído' };
+        const connectDb = await createConnection();
+
+        try {
+            const especialistaRepository = getRepository('Especialista');
+            await especialistaRepository.delete(id);
+            return { message: 'Especialista excluído' };
+        } finally {
+            connectDb.close()
+        }
     },
 
     async insertEspecialista(especialista) {
+        const connectDb = await createConnection();
 
-        const especialistaRepository = getRepository('Especialista');
-        const insertedEspecialista = await especialistaRepository.save(especialista);
-        return insertedEspecialista;
+        try {
+
+            const especialistaRepository = getRepository('Especialista');
+            const insertedEspecialista = await especialistaRepository.save(especialista);
+            return insertedEspecialista;
+        } finally {
+            connectDb.close()
+        }
     },
 
 };

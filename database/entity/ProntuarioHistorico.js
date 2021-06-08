@@ -1,7 +1,8 @@
 const { EntitySchema } = require('typeorm');
+const Modelo = require('./Modelo');
 
 module.exports = new EntitySchema({
-    name: 'ProntuarioHis',
+    name: 'ProntuarioHistorico',
     columns: {
         id: {
             type: Number,
@@ -21,6 +22,7 @@ module.exports = new EntitySchema({
             length: 255,
             nullable: false,
         },
+        ...Modelo,
     },
     relations: {
         prontuario: {

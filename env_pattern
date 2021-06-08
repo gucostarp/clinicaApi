@@ -1,0 +1,10 @@
+HOST=
+DATABASE=
+USER=
+PASSWORD=
+PORT=
+
+##################
+
+SECRET=
+EXPIRE=3600000

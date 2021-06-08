@@ -66,7 +66,7 @@ module.exports = {
 
     async insertUser(user) {
         const connectDb = await createConnection();
-        console.log(user)
+
         try {
             const userRepository = getRepository('User');
             const hash = bcrypt.hashSync(user.password, 10);

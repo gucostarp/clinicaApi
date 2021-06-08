@@ -1,4 +1,5 @@
 const { EntitySchema } = require('typeorm');
+// const Modelo = require('./Modelo');
 
 module.exports = new EntitySchema({
     name: 'Prontuario',
@@ -12,6 +13,7 @@ module.exports = new EntitySchema({
             type: Date,
             nullable: false,
         },
+        // ...Modelo,
     },
     relations: {
         cliente: {
@@ -20,9 +22,9 @@ module.exports = new EntitySchema({
             joinColumn: 'true',
             cascade: false,
         },
-        prontuarioHis: {
+        prontuarioHistorico: {
             type: 'one-to-many',
-            target: 'ProntuarioHis',
+            target: 'ProntuarioHistorico',
             cascade: true,
         },
     },

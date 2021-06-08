@@ -34,12 +34,13 @@ module.exports = {
 
         try {
             const atendimentoRepository = getRepository('Atendimento');
-            epository('Atendimento');
+            await atendimentoRepository('Atendimento');
             await atendimentoRepository.update(id, fields, { relations: ['cliente', 'especialista'] });
             return getAtendimento(id);
         } finally {
             connectDb.close()
         }
+
     },
 
     async deleteAtendimento(id) {

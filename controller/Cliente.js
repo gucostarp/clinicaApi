@@ -3,7 +3,7 @@ const prontuarioRepository = require('../services/Prontuario')
 
 const get = async(req, res) => {
     try {
-        const clientes = await clienteRepository.list(req.body);
+        const clientes = await clienteRepository.getClientes(req.body);
         res.json(clientes);
     } catch (error) {
         res.status(400).json({ message: 'Erro ao listar clientes' });
@@ -12,7 +12,7 @@ const get = async(req, res) => {
 
 const getOne = async(req, res) => {
     try {
-        const clientes = await clienteRepository.list(req.params.id);
+        const clientes = await clienteRepository.getCliente(req.params.id);
         res.json(clientes);
     } catch (error) {
         res.status(400).json({ message: 'Erro ao listar cliente' });
@@ -21,7 +21,7 @@ const getOne = async(req, res) => {
 
 const deleteOne = async(req, res) => {
     try {
-        const clientes = await clienteRepository.delete(req.params.id);
+        const clientes = await clienteRepository.deleteCliente(req.params.id);
         res.json(clientes);
     } catch (error) {
         res.status(400).json({ message: 'Erro ao deletar cliente' });
@@ -32,7 +32,7 @@ const update = async(req, res) => {
     try {
         const { id } = req.params;
         const fields = req.body;
-        const clientes = await clienteRepository.update(id, fields);
+        const clientes = await clienteRepository.updateCliente(id, fields);
         res.json(clientes);
     } catch (error) {
         res.status(400).json({ message: 'Erro ao atualizar dados do cliente' });
@@ -41,12 +41,12 @@ const update = async(req, res) => {
 
 const insert = async(req, res) => {
     try {
-        const insertedCliente = await clienteRepository.create(req.body);
-        const prontuario = await prontuarioRepository.create({ cliente: insertedCliente.id })
+        const insertedCliente = await clienteRepository.insertCliente(req.body);
+        const prontuario = await prontuarioRepository.insertCliente({ cliente: insertedCliente.id })
         const resultado = (insertedCliente, prontuario)
         res.json(resultado);
     } catch (error) {
-        res.status(400).json({ message: 'Erro ao criar cliente' });
+        res.status(400).json({ message: 'Erro ao inserir cliente' });
     }
 };
 
