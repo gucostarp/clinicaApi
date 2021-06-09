@@ -5,11 +5,7 @@ const logger = require('morgan');
 
 const Router = require('./routes/index')
 
-const { startDB } = require('./database');
-
 const app = express();
-
-// startDB();
 
 app.use(logger('dev'));
 app.use(express.json());

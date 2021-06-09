@@ -1,11 +1,11 @@
 const { createConnection, getRepository } = require('typeorm');
 
 module.exports = {
-    async getOne(loginData) {
+    async list(loginData) {
         const connectDB = await createConnection();
+
         try {
-            const userRepository = getRepository('User');
-            const result = await userRepository.findOne({ username: loginData.username });
+            const result = await getRepository('User').findOne({ username: loginData.username });
             return result;
         } finally {
             connectDB.close();

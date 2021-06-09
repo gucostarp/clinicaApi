@@ -1,34 +1,34 @@
 const { EntitySchema } = require('typeorm');
 
 module.exports = new EntitySchema({
-    name: 'Endereco',
+    name: 'Address',
     columns: {
         id: {
             type: Number,
             primary: true,
             generated: true,
         },
-        cep: {
+        zip: {
             type: String,
             length: 255,
             nullable: false,
         },
-        rua: {
+        street: {
             type: String,
             length: 255,
             nullable: false,
         },
-        bairro: {
+        neighborhood: {
             type: String,
             length: 100,
             nullable: false,
         },
-        cidade: {
+        city: {
             type: String,
             length: 255,
             nullable: true,
         },
-        estado: {
+        state: {
             type: String,
             length: 100,
             nullable: false,

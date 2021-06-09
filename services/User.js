@@ -4,36 +4,32 @@ const bcrypt = require('bcrypt');
 
 module.exports = {
 
-    async getUsers() {
+    async list() {
         const connectDb = await createConnection();
 
         try {
-            const userRepository = getRepository('User');
-            const users = await userRepository.find();
+            const users = await getRepository('User').find();
             return users;
         } finally {
             connectDb.close()
         }
     },
 
-    async getUser(id) {
+    async getId(id) {
         const connectDb = await createConnection();
 
         try {
-            const userRepository = getRepository('User');
-            const users = await userRepository.findOne(id);
+            const users = await getRepository('User').findOne(id);
             return users;
         } finally {
             connectDb.close()
         }
     },
 
-    async updateUser(id, fields) {
+    async update(id, fields) {
         const connectDb = await createConnection();
 
         try {
-            const userRepository = getRepository('User');
-
             const fields2 = fields;
 
             if (!fields.password) {
@@ -41,7 +37,7 @@ module.exports = {
                 fields2.password = hash;
             }
 
-            await userRepository.update(id, fields2);
+            await getRepository('User').update(id, fields2);
 
             const updatedUser = getUser(id);
             delete updatedUser.password;
@@ -52,29 +48,27 @@ module.exports = {
         }
     },
 
-    async deleteUser(id) {
+    async delete(id) {
         const connectDb = await createConnection();
 
         try {
-            const userRepository = getRepository('User');
-            await userRepository.delete(id);
+            await getRepository('User').delete(id);
             return { message: 'Usuário excluído' };
         } finally {
             connectDb.close()
         }
     },
 
-    async insertUser(user) {
+    async insert(user) {
         const connectDb = await createConnection();
 
         try {
-            const userRepository = getRepository('User');
             const hash = bcrypt.hashSync(user.password, 10);
 
             const user2 = user;
             user2.password = hash;
 
-            const insertedUser = await userRepository.save(user2);
+            const insertedUser = await getRepository('User').save(user2);
             delete insertedUser.password;
 
             return insertedUser;

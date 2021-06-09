@@ -1,30 +1,30 @@
 const { EntitySchema } = require('typeorm');
-// const Modelo = require('./Modelo');
 
 module.exports = new EntitySchema({
-    name: 'Especialista',
+    name: 'Client',
     columns: {
         id: {
             type: Number,
             primary: true,
             generated: true,
         },
-        registro: {
-            type: String,
-            length: 100,
-            unique: true,
-        },
-        nome: {
+        name: {
             type: String,
             length: 255,
             nullable: false,
         },
-        telefone: {
+        cpf: {
+            type: String,
+            length: 11,
+            nullable: false,
+            unique: true,
+        },
+        phone: {
             type: String,
             length: 11,
             nullable: true,
         },
-        celular: {
+        cellphone: {
             type: String,
             length: 11,
             nullable: false,
@@ -33,21 +33,22 @@ module.exports = new EntitySchema({
             type: String,
             length: 150,
             unique: true,
+            nullable: false,
+
         },
-        // ...Modelo,
+        blood_type: {
+            type: 'enum',
+            enum: ['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'],
+            nullable: true,
+        },
+
     },
     relations: {
-        endereco: {
+        address: {
             type: 'one-to-one',
-            target: 'Endereco',
+            target: 'Address',
             joinColumn: true,
             cascade: true,
-            nullable: false,
-        },
-        profissao: {
-            type: 'many-to-one',
-            target: 'Profissao',
-            cascade: false,
             nullable: false,
         },
     },

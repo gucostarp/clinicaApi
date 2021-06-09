@@ -1,38 +1,38 @@
 const { EntitySchema } = require('typeorm');
-const Modelo = require('./Modelo');
+
 
 module.exports = new EntitySchema({
-    name: 'ProntuarioHistorico',
+    name: 'PatientRecordHistory',
     columns: {
         id: {
             type: Number,
             primary: true,
             generated: true,
         },
-        data: {
+        date: {
             type: 'date',
             nullable: false,
         },
-        hora: {
+        hour: {
             type: 'time',
             nullable: false,
         },
-        descricao: {
+        description: {
             type: String,
             length: 255,
             nullable: false,
         },
-        ...Modelo,
+
     },
     relations: {
-        prontuario: {
+        patientRecord: {
             type: 'many-to-one',
-            target: 'Prontuario',
+            target: 'PatientRecord',
             cascade: true,
         },
-        especialista: {
+        specialist: {
             type: 'one-to-one',
-            target: 'Especialista',
+            target: 'Specialist',
             joinColumn: true,
         },
     },

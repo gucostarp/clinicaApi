@@ -1,27 +1,30 @@
-const userRepository = require('../services/User')
+const repository = require('../services/User')
 
 get = async(req, res) => {
+
     try {
-        const users = await userRepository.getUsers(req.body);
-        res.json(users);
+        const users = await repository.list(req.body);
+        res.status(200).json(users);
     } catch (error) {
         res.status(400).json({ message: 'Erro ao listar usuários' });
     }
 };
 
 getOne = async(req, res) => {
+
     try {
-        const users = await userRepository.getUser(req.params.id);
-        res.json(users);
+        const users = await repository.getId(req.params.id);
+        res.status(200).json(users);
     } catch (error) {
         res.status(400).json({ message: 'Erro ao listar usuário' });
     }
 };
 
 deleteOne = async(req, res) => {
+
     try {
-        const users = await userRepository.deleteUser(req.params.id);
-        res.json(users);
+        const users = await repository.delete(req.params.id);
+        res.status(200).json(users);
     } catch (error) {
         res.status(400).json({ message: 'Erro ao deletar usuário' });
     }
@@ -31,20 +34,21 @@ update = async(req, res) => {
     try {
         const { id } = req.params;
         const fields = req.body;
-        const users = await userRepository.updateUser(id, fields);
-        res.json(users);
+        const users = await repository.update(id, fields);
+        res.status(200).json(users);
     } catch (error) {
         res.status(400).json({ message: 'Erro ao atualizar dados do usuário' });
     }
 };
 
 insert = async(req, res) => {
+
     try {
-        const insertedUser = await userRepository.insertUser(req.body);
-        res.json(insertedUser);
+        const insertedUser = await repository.delete(req.body);
+        res.status(201).json(insertedUser);
     } catch (error) {
 
-        res.status(400).json({ message: 'Erro ao criar usuário' });
+        res.status(401).json({ message: 'Erro ao criar usuário' });
 
     }
 };

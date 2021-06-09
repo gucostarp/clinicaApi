@@ -1,10 +1,10 @@
-const atendimentoEntity = require('./database/entity/Atendimento');
-const clienteEntity = require('./database/entity/Cliente');
-const enderecoEntity = require('./database/entity/Endereco');
-const especialistaEntity = require('./database/entity/Especialista');
-const profissaoEntity = require('./database/entity/Profissao');
-const prontuarioEntity = require('./database/entity/Prontuario');
-const prontuarioHistoricoEntity = require('./database/entity/ProntuarioHistorico');
+const attendanceEntity = require('./database/entity/Attendance');
+const clientEntity = require('./database/entity/Client');
+const addressEntity = require('./database/entity/Address');
+const specialistEntity = require('./database/entity/Specialist');
+const profissaoEntity = require('./database/entity/Occupation');
+const patientRecordEntity = require('./database/entity/PatientRecord');
+const patientRecordHistoryEntity = require('./database/entity/PatientRecordHistory');
 const userEntity = require('./database/entity/User');
 require('dotenv/config');
 
@@ -13,22 +13,22 @@ require('dotenv/config');
 module.exports = {
     type: 'postgres',
     synchronize: true,
-    host: 'localhost',
-    username: process.env.USER,
-    password: process.env.PASSWORD,
-    port: '5432',
+    host: process.env.DB_HOST,
+    username: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORTA,
     logging: true,
     logger: 'simple-console',
-    database: 'clinica_api',
+    database: process.env.DB_NAME,
     entities: [
-        atendimentoEntity,
+        attendanceEntity,
         userEntity,
-        clienteEntity,
-        enderecoEntity,
-        especialistaEntity,
+        clientEntity,
+        addressEntity,
+        specialistEntity,
         profissaoEntity,
-        prontuarioEntity,
-        prontuarioHistoricoEntity
+        patientRecordEntity,
+        patientRecordHistoryEntity
     ],
     migrations: ['./database/migration/*.js'],
     cli: {

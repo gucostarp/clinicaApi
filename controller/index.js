@@ -1,20 +1,20 @@
-const Atendimento = require('./Atendimento');
+const Attendance = require('./Attendance');
 const Auth = require('./Auth');
-const Cliente = require('./Cliente');
-const Especialista = require('./Especialista');
-const Profissao = require('./Profissao');
-const Prontuario = require('./Prontuario');
-const ProntuarioHistorico = require('./ProntuarioHistorico');
+const Client = require('./Client');
+const Specialist = require('./Specialist');
+const Occupation = require('./Occupation');
+const PatientRecord = require('./PatientRecord');
+const PatientRecordHistory = require('./PatientRecordHistory');
 const User = require('./User');
 
 const Controllers = {
-    Atendimento,
+    Attendance,
     Auth,
-    Cliente,
-    Especialista,
-    Profissao,
-    Prontuario,
-    ProntuarioHistorico,
+    Client,
+    Specialist,
+    Occupation,
+    PatientRecord,
+    PatientRecordHistory,
     User
 }
 

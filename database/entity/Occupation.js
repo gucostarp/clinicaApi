@@ -1,24 +1,23 @@
 const { EntitySchema } = require('typeorm');
-// const Modelo = require('./Modelo');
 
 module.exports = new EntitySchema({
-    name: 'Profissao',
+    name: 'Occupation',
     columns: {
         id: {
             type: Number,
             primary: true,
             generated: true,
         },
-        nome: {
+        name: {
             type: String,
             nullable: false,
             length: 150,
         },
-        // ...Modelo,
+
     },
     relations: {
-        especialista: {
-            target: 'Especialista',
+        specialist: {
+            target: 'Specialist',
             type: 'one-to-many',
             nullable: true,
         },

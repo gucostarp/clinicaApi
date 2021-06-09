@@ -4,6 +4,7 @@ const Controllers = require('../controller/Index');
 const authMiddleware = require('../Middleware/auth');
 
 
+
 router.post('/auth/', Controllers.Auth.login);
 router.post('/users', Controllers.User.insert);
 
@@ -15,39 +16,45 @@ router.delete('/users/:id', Controllers.User.deleteOne);
 router.put('/users/:id', Controllers.User.update);
 
 
-router.get('/atendimento', Controllers.Atendimento.get);
-router.get('/atendimento/:id', Controllers.Atendimento.getOne);
-router.delete('/atendimento/:id', Controllers.Atendimento.deleteOne);
-router.put('/atendimento/:id', Controllers.Atendimento.update);
-router.post('/atendimento/', Controllers.Atendimento.insert);
+router.get('/attendances', Controllers.Attendance.get);
+router.get('/attendances/:id', Controllers.Attendance.getOne);
+router.delete('/attendances/:id', Controllers.Attendance.deleteOne);
+router.put('/attendances/:id', Controllers.Attendance.update);
+router.post('/attendances/', Controllers.Attendance.insert);
 
 
-router.get('/clientes', Controllers.Cliente.get);
-router.get('/clientes/:id', Controllers.Cliente.getOne);
-router.delete('/clientes/:id', Controllers.Cliente.deleteOne);
-router.put('/clientes/:id', Controllers.Cliente.update);
-router.post('/clientes/', Controllers.Cliente.insert);
+router.get('/clients', Controllers.Client.get);
+router.get('/clients/:id', Controllers.Client.getOne);
+router.delete('/clients/:id', Controllers.Client.deleteOne);
+router.put('/clients/:id', Controllers.Client.update);
+router.post('/clients/', Controllers.Client.insert);
 
 
-router.get('/especialistas', Controllers.Especialista.get);
-router.get('/especialistas/:id', Controllers.Especialista.getOne);
-router.delete('/especialistas/:id', Controllers.Especialista.deleteOne);
-router.put('/especialistas/:id', Controllers.Especialista.update);
-router.post('/especialistas/', Controllers.Especialista.insert);
+router.get('/specialists', Controllers.Specialist.get);
+router.get('/specialists/:id', Controllers.Specialist.getOne);
+router.delete('/specialists/:id', Controllers.Specialist.deleteOne);
+router.put('/specialists/:id', Controllers.Specialist.update);
+router.post('/specialists/', Controllers.Specialist.insert);
 
 
-router.get('/profissoes', Controllers.Profissao.get);
-router.get('/profissoes/:id', Controllers.Profissao.getOne);
-router.delete('/profissoes/:id', Controllers.Profissao.deleteOne);
-router.put('/profissoes/:id', Controllers.Profissao.update);
-router.post('/profissoes/', Controllers.Profissao.insert);
+router.get('/occupations', Controllers.Occupation.get);
+router.get('/occupations/:id', Controllers.Occupation.getOne);
+router.delete('/occupations/:id', Controllers.Occupation.deleteOne);
+router.put('/occupations/:id', Controllers.Occupation.update);
+router.post('/occupations/', Controllers.Occupation.insert);
 
 
-router.get('/prontuarios', Controllers.Prontuario.get);
-router.get('/prontuarios/:id', Controllers.Prontuario.getOne);
-router.delete('/prontuarios/:id', Controllers.Prontuario.deleteOne);
-router.put('/prontuarios/:id', Controllers.Prontuario.update);
-router.post('/prontuarios/', Controllers.Prontuario.insert);
+router.get('/patientRecords', Controllers.PatientRecord.get);
+router.get('/patientRecords/:id', Controllers.PatientRecord.getOne);
+router.delete('/patientRecords/:id', Controllers.PatientRecord.deleteOne);
+router.put('/patientRecords/:id', Controllers.PatientRecord.update);
+router.post('/patientRecords/', Controllers.PatientRecord.insert);
+
+router.get('/patientRecordshistory', Controllers.PatientRecordHistory.get);
+router.get('/patientRecordshistory/:id', Controllers.PatientRecordHistory.getOne);
+router.delete('/patientRecordshistory/:id', Controllers.PatientRecordHistory.deleteOne);
+router.put('/patientRecordshistory/:id', Controllers.PatientRecordHistory.update);
+router.post('/patientRecordshistory/', Controllers.PatientRecordHistory.insert);
 
 
 module.exports = router;

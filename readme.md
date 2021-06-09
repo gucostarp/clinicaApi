@@ -22,19 +22,20 @@ git clone https://github.com/gucostarp/clinicaApi.git
 Edite o arquivo "env_pattern" com as informações do banco de dados, conforme abaixo:
 
 ```
-HOST=
-DATABASE=
-USER=
-PASSWORD=
-PORT=
+DB_USER=
+DB_PASSWORD=
+DB_HOST=
+DB_PORT=
+DB_NAME=
 
 ##################
 
-SECRET=
+SECRET=iahsiug23453@3asf
 EXPIRE=3600000
+
 ```
 
-Salve esse arquivo com o nome .env.
+Salve esse arquivo com o name .env.
 
 
 Entre na pasta do projeto:

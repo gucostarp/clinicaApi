@@ -1,27 +1,27 @@
 const { EntitySchema } = require('typeorm');
-// const Modelo = require('./Modelo');
+
 
 module.exports = new EntitySchema({
-    name: 'Atendimento',
+    name: 'Attendance',
     columns: {
         id: {
             type: Number,
             primary: true,
             generated: true,
         },
-        data_agendamento: {
+        scheduling_date: {
             type: 'date',
             nullable: false,
         },
-        data_atendimento: {
+        attendance_date: {
             type: 'date',
             nullable: false,
         },
-        hora: {
+        hour: {
             type: 'time',
             nullable: false,
         },
-        valor: {
+        amount: {
             type: String,
             length: 255,
             nullable: false,
@@ -34,14 +34,14 @@ module.exports = new EntitySchema({
         // ...Modelo,
     },
     relations: {
-        especialista: {
+        specialist: {
             type: 'many-to-one',
-            target: 'Especialista',
+            target: 'Specialist',
             cascade: false,
         },
-        cliente: {
+        client: {
             type: 'many-to-one',
-            target: 'Cliente',
+            target: 'Client',
             cascade: false,
         },
     },
