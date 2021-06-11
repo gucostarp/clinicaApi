@@ -4,7 +4,8 @@
     "private": true,
     "scripts": {
         "start": "node ./bin/www",
-        "dev": "nodemon ./bin/www"
+        "dev": "nodemon ./bin/www",
+        "test": "jest"
     },
     "dependencies": {
         "bcrypt": "^5.0.1",
@@ -23,6 +24,7 @@
         "typeorm": "^0.2.32"
     },
     "devDependencies": {
+        "supertest": "6.1.3",
         "jest": "^27.0.4",
         "eslint": "^7.27.0",
         "eslint-config-airbnb": "^18.2.1",

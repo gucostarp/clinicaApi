@@ -9,13 +9,10 @@ const userEntity = require('./database/entity/User');
 require('dotenv/config');
 
 module.exports = {
+
     type: 'postgres',
     synchronize: false,
-    url: 'postgres://iuisughqopvshp:92cea9a0bda537095dad46eb933b61492573a6bce9a45eb37e335f738a0acb61@ec2-34-193-112-164.compute-1.amazonaws.com:5432/dcb3egj6u7gie3',
-    // host: process.env.DATABASE_URL,
-    // username: process.env.DB_USER,
-    // password: process.env.DB_PASSWORD,
-    // port: process.env.DB_PORT,
+    url: process.env.URL,
     dropschema: false,
     logging: true,
     logger: 'simple-console',
@@ -25,7 +22,6 @@ module.exports = {
             rejectUnauthorized: false
         },
     },
-    // database: process.env.DB_NAME,
     entities: [
         attendanceEntity,
         userEntity,

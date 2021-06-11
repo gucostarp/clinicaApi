@@ -69,7 +69,7 @@ module.exports = {
             user2.password = hash;
 
             const insertedUser = await getRepository("user").save(user2);
-            delete insertedUser.password;
+            delete insertedUser.password, insertedUser.username;
 
             return insertedUser;
         } finally {
