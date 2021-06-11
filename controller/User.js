@@ -44,7 +44,7 @@ update = async(req, res) => {
 insert = async(req, res) => {
 
     try {
-        const insertedUser = await repository.delete(req.body);
+        const insertedUser = await repository.insert(req.body);
         res.status(201).json(insertedUser);
     } catch (error) {
 
