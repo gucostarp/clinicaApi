@@ -10,14 +10,21 @@ require('dotenv/config');
 
 module.exports = {
     type: 'postgres',
-    synchronize: true,
+    synchronize: false,
     url: 'postgres://iuisughqopvshp:92cea9a0bda537095dad46eb933b61492573a6bce9a45eb37e335f738a0acb61@ec2-34-193-112-164.compute-1.amazonaws.com:5432/dcb3egj6u7gie3',
     // host: process.env.DATABASE_URL,
     // username: process.env.DB_USER,
     // password: process.env.DB_PASSWORD,
     // port: process.env.DB_PORT,
+    dropschema: false,
     logging: true,
     logger: 'simple-console',
+    ssl: true,
+    extra: {
+        ssl: {
+            rejectUnauthorized: false
+        },
+    },
     // database: process.env.DB_NAME,
     entities: [
         attendanceEntity,
@@ -29,7 +36,7 @@ module.exports = {
         patientRecordEntity,
         patientRecordHistoryEntity
     ],
-    migrations: ['./database/migration/*.js'],
+    migrations: ['./database/migrations/*.js'],
     cli: {
         migrationsDir: './database/migration',
     },
