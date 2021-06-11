@@ -48,6 +48,7 @@ insert = async(req, res) => {
         res.status(201).json(insertedUser);
     } catch (error) {
 
+        console.log(erro)
         res.status(401).json({ message: 'Erro ao criar usuário' });
 
     }
