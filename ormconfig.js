@@ -38,6 +38,6 @@ module.exports = {
     ],
     migrations: ['./database/migrations/*.js'],
     cli: {
-        migrationsDir: './database/migration',
+        migrationsDir: './database/migrations',
     },
 };
