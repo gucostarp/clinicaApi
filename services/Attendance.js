@@ -8,7 +8,7 @@ module.exports = {
         try {
             const findArguments = { relations: ['client', 'specialist'] };
 
-            if (filter) { findArguments.where = filter; }
+            if (filter) { findArguments.where = filter; };
 
             const attendance = await getRepository('Attendance').find(findArguments);
             return (attendance);

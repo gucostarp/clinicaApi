@@ -11,3 +11,5 @@ OK -Reedundancias (services - get, post, delete, etc);
 -Testes Back-end: Jest;
 
 -Estudar/ler sobre TDD - Test Driven Development
+
+-x-frame options
