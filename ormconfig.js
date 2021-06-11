@@ -14,7 +14,7 @@ module.exports = {
     host: process.env.DB_HOST,
     username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    port: process.env.PORT || process.env.DB_PORT,
+    port: process.env.DB_PORT,
     logging: true,
     logger: 'simple-console',
     database: process.env.DB_NAME,
