@@ -1,80 +1,64 @@
-const { createConnection, getRepository } = require('typeorm');
+const { getConnection } = require('typeorm');
 
 const bcrypt = require('bcrypt');
 
 module.exports = {
 
     async list() {
-        const connectDb = await createConnection();
+        const connection = getConnection();
 
-        try {
-            const users = await getRepository('User').find();
-            return users;
-        } finally {
-            connectDb.close()
-        }
+        const users = await connection.getRepository('User').find();
+        return users;
+
     },
 
     async getId(id) {
-        const connectDb = await createConnection();
+        const connection = getConnection();
 
-        try {
-            const users = await getRepository('User').findOne(id);
-            return users;
-        } finally {
-            connectDb.close()
-        }
+        const users = await connection.getRepository('User').findOne(id);
+        return users;
+
     },
 
     async update(id, fields) {
-        const connectDb = await createConnection();
+        const connection = getConnection();
 
-        try {
-            const fields2 = fields;
+        const fields2 = fields;
 
-            if (!fields.password) {
-                const hash = bcrypt.hashSync(fields.password, 10);
-                fields2.password = hash;
-            }
-
-            await getRepository('User').update(id, fields2);
-
-            const updatedUser = getUser(id);
-            delete updatedUser.password;
-
-            return updatedUser;
-        } finally {
-            connectDb.close()
+        if (!fields.password) {
+            const hash = bcrypt.hashSync(fields.password, 10);
+            fields2.password = hash;
         }
+
+        await connection.getRepository('User').update(id, fields2);
+
+        const updatedUser = getUser(id);
+        delete updatedUser.password;
+
+        return updatedUser;
+
     },
 
     async delete(id) {
-        const connectDb = await createConnection();
+        const connection = getConnection();
 
-        try {
-            await getRepository('User').delete(id);
-            return { message: 'Usuário excluído' };
-        } finally {
-            connectDb.close()
-        }
+        await connection.getRepository('User').delete(id);
+        return { message: 'Usuário excluído' };
+
     },
 
     async insert(user) {
-        const connectDb = await createConnection();
+        const connection = await getConnection();
 
-        try {
-            const hash = bcrypt.hashSync(user.password, 10);
+        const hash = bcrypt.hashSync(user.password, 10);
 
-            const user2 = user;
-            user2.password = hash;
+        const user2 = user;
+        user2.password = hash;
 
-            const insertedUser = await getRepository("user").save(user2);
-            delete insertedUser.password, insertedUser.username;
+        const insertedUser = await connection.getRepository("User").save(user2);
+        delete insertedUser.password, insertedUser.username;
 
-            return insertedUser;
-        } finally {
-            connectDb.close()
-        }
+        return insertedUser;
+
     },
-
 };

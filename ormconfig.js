@@ -12,16 +12,16 @@ module.exports = {
 
     type: 'postgres',
     synchronize: false,
-    url: process.env.URL,
+    url: process.env.DATABASE_URL,
     dropschema: false,
     logging: true,
     logger: 'simple-console',
-    ssl: true,
-    extra: {
-        ssl: {
-            rejectUnauthorized: false
-        },
-    },
+    // ssl: true,
+    // extra: {
+    //     ssl: {
+    //         rejectUnauthorized: false
+    //     },
+    // },
     entities: [
         attendanceEntity,
         userEntity,

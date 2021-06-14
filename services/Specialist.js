@@ -1,61 +1,46 @@
-const { createConnection, getRepository } = require('typeorm');
+const { getConnection } = require('typeorm');
 
 module.exports = {
 
     async list() {
-        const connectDb = await createConnection();
+        const connection = getConnection();
 
-        try {
-            const specialists = await getRepository('Specialist').find({ relations: ['profissao'] });
-            return (specialists);
-        } finally {
-            connectDb.close()
-        }
+        const specialists = await connection.getRepository('Specialist').find({ relations: ['profissao'] });
+        return (specialists);
+
     },
 
     async getId(id) {
-        const connectDb = await createConnection();
+        const connection = getConnection();
 
-        try {
-            const specialist = await getRepository('Specialist').findOne(id, { relations: ['profissao'] });
-            return (specialist);
-        } finally {
-            connectDb.close()
-        }
+        const specialist = await connection.getRepository('Specialist').findOne(id, { relations: ['profissao'] });
+        return (specialist);
+
     },
 
     async update(id, fields) {
-        const connectDb = await createConnection();
+        const connection = getConnection();
 
-        try {
-            await getRepository('Specialist').update(id, fields);
-            return getSpecialist(id);
-        } finally {
-            connectDb.close()
-        }
+        await connection.getRepository('Specialist').update(id, fields);
+        return getSpecialist(id);
+
     },
 
 
     async delete(id) {
-        const connectDb = await createConnection();
+        const connection = getConnection();
 
-        try {
-            await getRepository('Specialist').delete(id);
-            return { message: 'Specialist excluído' };
-        } finally {
-            connectDb.close()
-        }
+        await connection.getRepository('Specialist').delete(id);
+        return { message: 'Specialist excluído' };
+
     },
 
     async insert(specialist) {
-        const connectDb = await createConnection();
+        const connection = getConnection();
 
-        try {
-            const insertedSpecialist = await getRepository('Specialist').save(specialist);
-            return insertedSpecialist;
-        } finally {
-            connectDb.close()
-        }
+        const insertedSpecialist = await connection.getRepository('Specialist').save(specialist);
+        return insertedSpecialist;
+
     },
 
 };

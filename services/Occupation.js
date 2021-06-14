@@ -1,60 +1,45 @@
-const { createConnection, getRepository } = require('typeorm');
+const { getConnection } = require('typeorm');
 
 module.exports = {
 
     async list() {
-        const connectDb = await createConnection();
+        const connection = getConnection();
 
-        try {
-            const occupations = await getRepository('Occupation').find();
-            return (occupations);
-        } finally {
-            connectDb.close()
-        }
+        const occupations = await connection.getRepository('Occupation').find();
+        return (occupations);
+
     },
 
     async getId(id) {
-        const connectDb = await createConnection();
+        const connection = getConnection();
 
-        try {
-            const specialist = await getRepository('Occupation').findOne(id);
-            return (specialist);
-        } finally {
-            connectDb.close()
-        }
+        const specialist = await connection.getRepository('Occupation').findOne(id);
+        return (specialist);
+
     },
 
     async update(id, fields) {
-        const connectDb = await createConnection();
+        const connection = getConnection();
 
-        try {
-            await getRepository('Occupation').update(id, fields);
-            return getOccupation(id);
-        } finally {
-            connectDb.close()
-        }
+        await connection.getRepository('Occupation').update(id, fields);
+        return getOccupation(id);
+
     },
 
     async delete(id) {
-        const connectDb = await createConnection();
+        const connection = getConnection();
 
-        try {
-            await getRepository('Occupation').delete(id);
-            return { message: 'Occupation excluído' };
-        } finally {
-            connectDb.close()
-        }
+        await connection.getRepository('Occupation').delete(id);
+        return { message: 'Occupation excluído' };
+
     },
 
     async insert(profissao) {
-        const connectDb = await createConnection();
+        const connection = getConnection();
 
-        try {
-            const insertedOccupation = await getRepository('Occupation').save(profissao);
-            return insertedOccupation;
-        } finally {
-            connectDb.close()
-        }
+        const insertedOccupation = await connection.getRepository('Occupation').save(profissao);
+        return insertedOccupation;
+
     },
 
 };

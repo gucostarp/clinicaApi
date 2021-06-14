@@ -6,7 +6,7 @@ const get = async(req, res) => {
         const patientRecords = await repository.list(req.body);
         res.status(200).json(patientRecords);
     } catch (error) {
-        res.status(404).json({ message: 'Erro ao listar patientRecords' });
+        res.status(404).json({ message: 'Error listing patients record.' });
     }
 };
 
@@ -16,7 +16,7 @@ const getOne = async(req, res) => {
         const patientRecords = await repository.getId(req.params.id);
         res.status(200).json(patientRecords);
     } catch (error) {
-        res.status(404).json({ message: 'Erro ao listar patientRecord' });
+        res.status(404).json({ message: 'Error listing patient record.' });
     }
 };
 
@@ -26,7 +26,7 @@ const deleteOne = async(req, res) => {
         const patientRecords = await repository.delete(req.params.id);
         res.status(200).json(patientRecords);
     } catch (error) {
-        res.status(404).json({ message: 'Erro ao deletar patientRecord' });
+        res.status(404).json({ message: 'Error deleting patient record.' });
     }
 };
 
@@ -38,7 +38,7 @@ const update = async(req, res) => {
         repository.update(id, fields);
         res.jstatus(200).son(patientRecords);
     } catch (error) {
-        res.status(404).json({ message: 'Erro ao atualizar dados do patientRecord' });
+        res.status(404).json({ message: 'Error updating patient record information.' });
     }
 };
 
@@ -48,7 +48,7 @@ const insert = async(req, res) => {
         const insertedPatientRecord = await repository.insert(req.body);
         res.status(201).json(insertedPatientRecord);
     } catch (error) {
-        res.status(404).json({ message: 'Erro ao criar patientRecord' });
+        res.status(404).json({ message: 'Error when inserting patient record.' });
     }
 };
 

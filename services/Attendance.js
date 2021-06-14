@@ -1,65 +1,50 @@
-const { createConnection, getRepository } = require('typeorm');
+const { createConnection, getConnection, getRepository } = require('typeorm');
 
 module.exports = {
 
     async list(filter) {
-        const connectDb = await createConnection();
+        const connection = getConnection();
 
-        try {
-            const findArguments = { relations: ['client', 'specialist'] };
+        const findArguments = { relations: ['client', 'specialist'] };
 
-            if (filter) { findArguments.where = filter; };
+        if (filter) { findArguments.where = filter; };
 
-            const attendance = await getRepository('Attendance').find(findArguments);
-            return (attendance);
-        } finally {
-            connectDb.close()
-        }
+        const attendance = connection.getRepository('Attendance').find(findArguments);
+        return (attendance);
+
     },
 
     async getId(id) {
-        const connectDb = await createConnection();
+        const connection = getConnection();
 
-        try {
-            const attendance = await getRepository('Attendance').findOne(id, { relations: ['client', 'specialist'] });
-            return (attendance);
-        } finally {
-            connectDb.close()
-        }
+        const attendance = await connection.getRepository('Attendance').findOne(id, { relations: ['client', 'specialist'] });
+        return (attendance);
+
     },
 
     async update(id, fields) {
-        const connectDb = await createConnection();
+        const connection = getConnection();
 
-        try {
-            await getRepository('Attendance').update(id, fields, { relations: ['client', 'specialist'] });
-            return getId(id);
-        } finally {
-            connectDb.close()
-        }
+        await connection.getRepository('Attendance').update(id, fields, { relations: ['client', 'specialist'] });
+        return getId(id);
+
 
     },
 
     async delete(id) {
-        const connectDb = await createConnection();
+        const connection = getConnection();
 
-        try {
-            await getRepository('Attendance').delete(id);
-            return { message: 'Attendance deleted' };
-        } finally {
-            connectDb.close()
-        }
+        await connection.getRepository('Attendance').delete(id);
+        return { message: 'Attendance deleted' };
+
     },
 
     async insert(attendance) {
-        const connectDb = await createConnection();
+        const connection = getConnection();
 
-        try {
-            const insertedAttendance = await getRepository('Attendance').save(attendance);
-            return insertedAttendance;
-        } finally {
-            connectDb.close()
-        }
+        const insertedAttendance = await connection.getRepository('Attendance').save(attendance);
+        return insertedAttendance;
+
     }
 
 }

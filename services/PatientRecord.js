@@ -1,60 +1,45 @@
-const { createConnection, getRepository } = require('typeorm');
+const { getConnection } = require('typeorm');
 
 module.exports = {
 
     async list() {
-        const connectDb = await createConnection();
+        const connection = getConnection();
 
-        try {
-            const patientRecords = await getRepository('PatientRecord').find({ relations: ['client'] });
-            return (patientRecords);
-        } finally {
-            connectDb.close()
-        }
+        const patientRecords = await connection.getRepository('PatientRecord').find({ relations: ['client'] });
+        return (patientRecords);
+
     },
 
     async getId(id) {
-        const connectDb = await createConnection();
+        const connection = getConnection();
 
-        try {
-            const patientRecord = await getRepository('PatientRecord').findOne(id, { relations: ['client'] });
-            return (patientRecord);
-        } finally {
-            connectDb.close()
-        }
+        const patientRecord = await connection.getRepository('PatientRecord').findOne(id, { relations: ['client'] });
+        return (patientRecord);
+
     },
 
     async update(id, fields) {
-        const connectDb = await createConnection();
+        const connection = getConnection();
 
-        try {
-            await getRepository('PatientRecord').update(id, fields);
-            return getId(id);
-        } finally {
-            connectDb.close()
-        }
+        await connection.getRepository('PatientRecord').update(id, fields);
+        return getId(id);
+
     },
 
     async delete(id) {
-        const connectDb = await createConnection();
+        const connection = getConnection();
 
-        try {
-            await getRepository('PatientRecord').delete(id);
-            return { message: 'PatientRecord excluído' };
-        } finally {
-            connectDb.close()
-        }
+        await connection.getRepository('PatientRecord').delete(id);
+        return { message: 'PatientRecord excluído' };
+
     },
 
     async insert(patientRecord) {
-        const connectDb = await createConnection();
+        const connection = getConnection();
 
-        try {
-            const insertedPatientRecord = await getRepository('PatientRecord').save(patientRecord);
-            return insertedPatientRecord;
-        } finally {
-            connectDb.close()
-        }
+        const insertedPatientRecord = await connection.getRepository('PatientRecord').save(patientRecord);
+        return insertedPatientRecord;
+
     },
 
 };

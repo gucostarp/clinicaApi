@@ -1,60 +1,45 @@
-const { createConnection, getRepository } = require('typeorm');
+const { getConnection } = require('typeorm');
 
 module.exports = {
 
     async list() {
-        const connectDb = await createConnection();
+        const connection = getConnection();
 
-        try {
-            const client = await getRepository('Client').find({ relations: ['address'] });
-            return client;
-        } finally {
-            connectDb.close()
-        }
+        const client = await connection.getRepository('Client').find({ relations: ['address'] });
+        return client;
+
     },
 
     async getId(id) {
-        const connectDb = await createConnection();
+        const connection = getConnection();
 
-        try {
-            const client = await getRepository('Client').findOne(id);
-            return client;
-        } finally {
-            connectDb.close()
-        }
+        const client = await connection.getRepository('Client').findOne(id);
+        return client;
+
     },
 
     async update(id, fields) {
-        const connectDb = await createConnection();
+        const connection = getConnection();
 
-        try {
-            await getRepository('Client').update(id, fields);
-            return getClient(id);
-        } finally {
-            connectDb.close()
-        }
+        await connection.getRepository('Client').update(id, fields);
+        return getClient(id);
+
     },
 
     async delete(id) {
-        const connectDb = await createConnection();
+        const connection = getConnection();
 
-        try {
-            await getRepository('Client').delete(id);
-            return { message: 'Client excluído' };
-        } finally {
-            connectDb.close()
-        }
+        await connection.getRepository('Client').delete(id);
+        return { message: 'Client excluído' };
+
     },
 
     async insert(client) {
-        const connectDb = await createConnection();
+        const connection = getConnection();
 
-        try {
-            const insertedClient = await getRepository('Client').save(client);
-            return insertedClient;
-        } finally {
-            connectDb.close()
-        }
+        const insertedClient = await connection.getRepository('Client').save(client);
+        return insertedClient;
+
     },
 
 }
