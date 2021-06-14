@@ -13,7 +13,7 @@ const get = async(req, res) => {
 const getOne = async(req, res) => {
 
     try {
-        const patientRecords = await repository.getId(req.params.id);
+        const patientRecords = await repository.detail(req.params.id);
         res.status(200).json(patientRecords);
     } catch (error) {
         res.status(404).json({ message: 'Error listing patient record.' });

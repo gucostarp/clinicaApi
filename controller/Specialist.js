@@ -14,7 +14,7 @@ const get = async(req, res) => {
 const getOne = async(req, res) => {
 
     try {
-        const specialists = await repository.getId(req.params.id);
+        const specialists = await repository.detail(req.params.id);
         res.status(200).json(specialists);
     } catch (error) {
         res.status(404).json({ message: 'Erro ao listar specialist' });

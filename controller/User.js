@@ -13,7 +13,7 @@ get = async(req, res) => {
 getOne = async(req, res) => {
 
     try {
-        const users = await repository.getId(req.params.id);
+        const users = await repository.detail(req.params.id);
         res.status(200).json(users);
     } catch (error) {
         res.status(400).json({ message: 'Erro ao listar usuário' });

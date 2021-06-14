@@ -10,7 +10,7 @@ module.exports = {
 
     },
 
-    async getId(id) {
+    async detail(id) {
         const connection = getConnection();
 
         const client = await connection.getRepository('Client').findOne(id);

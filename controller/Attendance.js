@@ -13,7 +13,7 @@ const get = async(req, res) => {
 const getOne = async(req, res) => {
 
     try {
-        const attendance = await repository.getId(req.params.id);
+        const attendance = await repository.detail(req.params.id);
         res.status(200).json(attendance);
     } catch (error) {
         res.status(404).json({ message: 'Erro ao listar atendimento' });

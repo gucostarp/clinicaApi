@@ -7,12 +7,15 @@ module.exports = {
     async list() {
         const connection = getConnection();
 
-        const users = await connection.getRepository('User').find();
+        const users = await connection.getRepository('User')
+            .createQueryBuilder('user')
+            .take(5)
+            .getMany()
         return users;
 
     },
 
-    async getId(id) {
+    async detail(id) {
         const connection = getConnection();
 
         const users = await connection.getRepository('User').findOne(id);

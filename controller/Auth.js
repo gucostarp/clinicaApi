@@ -9,7 +9,7 @@ async function login(req, res) {
     try {
         const user = await repository.list({ username });
 
-        if (user && bcrypt.compare(password, user.password)) {
+        if (user && (await bcrypt.compare(password, user.password))) {
             delete user.password;
             user.token = JwToken.makeToken(user);
             return res.status(200).json(user);
@@ -20,7 +20,7 @@ async function login(req, res) {
     } catch (erro) {
         console.log(erro)
 
-        return res.status(400).json(erro);
+        return res.status(401).json(erro);
     }
 }
 

@@ -13,7 +13,7 @@ const get = async(req, res) => {
 const getOne = async(req, res) => {
 
     try {
-        const occupations = await repository.getId(req.params.id);
+        const occupations = await repository.detail(req.params.id);
         res.status(200).json(occupations);
     } catch (error) {
         res.status(404).json({ message: 'Erro ao listar occupation' });

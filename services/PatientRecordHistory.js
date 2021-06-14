@@ -10,7 +10,7 @@ module.exports = {
 
     },
 
-    async getId(id) {
+    async detail(id) {
         const connection = getConnection();
 
         const patientRecord = await connection.getRepository('PatientRecord').findOne(id, { relations: ['specialist, patientRecord'] });

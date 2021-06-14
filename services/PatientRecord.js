@@ -10,7 +10,7 @@ module.exports = {
 
     },
 
-    async getId(id) {
+    async detail(id) {
         const connection = getConnection();
 
         const patientRecord = await connection.getRepository('PatientRecord').findOne(id, { relations: ['client'] });
@@ -22,7 +22,7 @@ module.exports = {
         const connection = getConnection();
 
         await connection.getRepository('PatientRecord').update(id, fields);
-        return getId(id);
+        return detail(id);
 
     },
 

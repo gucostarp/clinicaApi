@@ -14,7 +14,7 @@ module.exports = {
 
     },
 
-    async getId(id) {
+    async detail(id) {
         const connection = getConnection();
 
         const attendance = await connection.getRepository('Attendance').findOne(id, { relations: ['client', 'specialist'] });
@@ -26,7 +26,7 @@ module.exports = {
         const connection = getConnection();
 
         await connection.getRepository('Attendance').update(id, fields, { relations: ['client', 'specialist'] });
-        return getId(id);
+        return detail(id);
 
 
     },
