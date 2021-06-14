@@ -16,12 +16,12 @@ module.exports = {
     dropschema: false,
     logging: true,
     logger: 'simple-console',
-    // ssl: true,
-    // extra: {
-    //     ssl: {
-    //         rejectUnauthorized: false
-    //     },
-    // },
+    ssl: true,
+    extra: {
+        ssl: {
+            rejectUnauthorized: false
+        },
+    },
     entities: [
         attendanceEntity,
         userEntity,
