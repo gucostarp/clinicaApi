@@ -13,16 +13,20 @@ module.exports = {
     async detail(id) {
         const connection = getConnection();
 
-        const patientRecord = await connection.getRepository('PatientRecord').findOne(id, { relations: ['client'] });
-        return (patientRecord);
+        const repository = await connection.getRepository('PatientRecord');
+        const result = await repository.findOne(id, { relations: ['client'] });
+        const patientRecordHistory = connection.getRepository('PatientRecordHistory');
+        result.histories = await patientRecordHistory.find({ where: { patientRecord: result.id } });
+        return result;
 
     },
 
     async update(id, fields) {
         const connection = getConnection();
 
-        await connection.getRepository('PatientRecord').update(id, fields);
-        return detail(id);
+        const repository = await connection.getRepository('PatientRecord').update(id, fields);
+        const result = await repository.findOne(id, { relations: ['client', 'patientRecordHistory'] });
+        return result;
 
     },
 
@@ -37,7 +41,7 @@ module.exports = {
     async insert(patientRecord) {
         const connection = getConnection();
 
-        const insertedPatientRecord = await connection.getRepository('PatientRecord').save(patientRecord);
+        const insertedPatientRecord = await connection.getRepository('PatientRecord').save(patientRecord, { relations: ['client'] });
         return insertedPatientRecord;
 
     },

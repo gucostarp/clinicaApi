@@ -2,10 +2,13 @@ const { getConnection } = require('typeorm');
 
 module.exports = {
 
-    async list() {
+    async list(data) {
+        const findData = { relations: ['address', 'occupation'] };
+        if (data) { findData.where = data }
+
         const connection = getConnection();
 
-        const specialists = await connection.getRepository('Specialist').find({ relations: ['profissao'] });
+        const specialists = await connection.getRepository('Specialist').find(data);
         return (specialists);
 
     },
@@ -13,19 +16,22 @@ module.exports = {
     async detail(id) {
         const connection = getConnection();
 
-        const specialist = await connection.getRepository('Specialist').findOne(id, { relations: ['profissao'] });
+        const specialist = await connection.getRepository('Specialist').findOne(id, { relations: ['address', 'occupation'] });
         return (specialist);
-
     },
 
     async update(id, fields) {
         const connection = getConnection();
 
-        await connection.getRepository('Specialist').update(id, fields);
-        return getSpecialist(id);
-
+        const repository = await connection.getRepository('Specialist');
+        const occupationUpdate = { occupation: data.occupation }
+        const specialistUpdate = await connection.getRepository('Specialist').findOne(id, { relations: ['address', 'occupation'] })
+        repository.merge(specialistUpdate, fields)
+        await repository.save(specialistUpdate);
+        await repository.update(id, occupationUpdate);
+        const result = await repository.findOne(id, { relations: ['address', 'occupation'] });
+        return result;
     },
-
 
     async delete(id) {
         const connection = getConnection();
@@ -35,10 +41,10 @@ module.exports = {
 
     },
 
-    async insert(specialist) {
+    async insert(data) {
         const connection = getConnection();
 
-        const insertedSpecialist = await connection.getRepository('Specialist').save(specialist);
+        const insertedSpecialist = await connection.getRepository('Specialist').save(data);
         return insertedSpecialist;
 
     },

@@ -4,11 +4,13 @@ const bcrypt = require('bcrypt');
 
 module.exports = {
 
-    async list() {
+    async list(data) {
+        const findData = { select: ['id', 'name', 'username'] };
+        if (data) { findData.where = data };
         const connection = getConnection();
 
         const users = await connection.getRepository('User')
-            .createQueryBuilder('user')
+            .createQueryBuilder(data)
             .take(5)
             .getMany()
         return users;
@@ -16,9 +18,10 @@ module.exports = {
     },
 
     async detail(id) {
+
         const connection = getConnection();
 
-        const users = await connection.getRepository('User').findOne(id);
+        const users = await connection.getRepository('User').findOne(id, { select: ['id', 'name', 'username'] });
         return users;
 
     },
