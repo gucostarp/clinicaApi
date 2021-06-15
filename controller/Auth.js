@@ -1,6 +1,7 @@
 const repository = require('../services/Auth')
 const JwToken = require('../helpers/jwToken')
 const bcrypt = require('bcrypt');
+
 async function login(req, res) {
     const { username, password } = req.body;
 

@@ -11,9 +11,8 @@ Essas instruções permitirão que você obtenha uma cópia do projeto em opera�
 
 Primeiros passos:
 
-
 ```
-Crie um banco de dados.
+Crie um banco de dados PostgreSQL.
 ```
 No terminal, clone o projeto:
 ```
@@ -22,15 +21,13 @@ git clone https://github.com/gucostarp/clinicaApi.git
 Edite o arquivo "env_pattern" com as informações do banco de dados, conforme abaixo:
 
 ```
-DB_USER=
-DB_PASSWORD=
-DB_HOST=
-DB_PORT=
-DB_NAME=
+
+DATABASE_URL=U URL da do seu banco de dados
+ENVIRONMENT=DEV
 
 ##################
 
-SECRET=iahsiug23453@3asf
+SECRET=Sua chave para criptografia
 EXPIRE=3600000
 
 ```
@@ -57,11 +54,17 @@ Pronto, agora é possível acessar a aplicação a partir da rota http://localho
 
 ## 🛠️ Construído com
 
-* NODE.js
-* Express
-* TypeORM
-* Postgre SQL
-
+- [Node.js](https://nodejs.org/en/)
+- [Express.js](https://expressjs.com/pt-br/)
+- [Express Validator](https://express-validator.github.io/)
+- [TypeORM](https://typeorm.io/#/)
+- [Bcrypt](https://www.npmjs.com/package/bcrypt)
+- [JWT](https://jwt.io/)
+- [Swagger](https://swagger.io/)
+- [Jest](https://jestjs.io/pt-BR/)
+- [Axios](https://github.com/axios/axios)
+- [Eslint](https://eslint.org/)
+- [SuperTest](https://www.npmjs.com/package/supertest)
 
 ## ✒️ Autores
 

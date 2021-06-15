@@ -12,6 +12,7 @@ module.exports = {
         const users = await connection.getRepository('User')
             .createQueryBuilder(data)
             .take(5)
+            .skip(0)
             .getMany()
         return users;
 
