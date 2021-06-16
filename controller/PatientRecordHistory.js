@@ -48,6 +48,7 @@ const insert = async(req, res) => {
         const insertedPatientRecord = await repository.insert(req.body);
         res.status(201).json(insertedPatientRecord);
     } catch (error) {
+        console.log(error)
         res.status(404).json({ message: 'Error when inserting patient record.' });
     }
 };

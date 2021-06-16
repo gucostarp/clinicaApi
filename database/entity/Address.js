@@ -34,4 +34,18 @@ module.exports = new EntitySchema({
             nullable: false,
         },
     },
+
+    relations: {
+        client: {
+            type: 'many-to-one',
+            target: 'Client',
+            cascade: true,
+        },
+        specialist: {
+            type: 'many-to-one',
+            target: 'Specialist',
+            cascade: true,
+        },
+    },
+
 });

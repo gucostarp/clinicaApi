@@ -48,10 +48,10 @@ const insert = async(req, res) => {
 
     try {
         const insertedClient = await repository.insert(req.body);
-        const patientRecord = await patientRecordRepository.insert({ client: insertedClient.id })
-        const resultado = (insertedClient, patientRecord)
-        res.status(201).json(resultado);
+
+        res.status(201).json(insertedClient);
     } catch (error) {
+        console.log(error)
         res.status(404).json({ message: 'Erro ao inserir client' });
     }
 };

@@ -19,10 +19,9 @@ dotenv.config();
 //     next();
 // })
 
-
 const Router = require('./routes/index')
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 const app = express();
 
 (async() => {

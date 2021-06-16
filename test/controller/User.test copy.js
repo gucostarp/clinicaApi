@@ -28,8 +28,6 @@ afterAll(async() => {
     await Repository.delete(user.id);
 });
 
-// Testa listar usuario
-
 describe('Test auth errors', () => {
     it('should require authorization', async() => {
         const res = await request(app).get('/users');

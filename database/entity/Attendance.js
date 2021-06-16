@@ -31,7 +31,7 @@ module.exports = new EntitySchema({
             enum: ['AGENDADO', 'REALIZADO', 'CANCELADO'],
             nullable: false,
         },
-        // ...Modelo,
+
     },
     relations: {
         specialist: {

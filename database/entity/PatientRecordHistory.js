@@ -1,6 +1,5 @@
 const { EntitySchema } = require('typeorm');
 
-
 module.exports = new EntitySchema({
     name: 'PatientRecordHistory',
     columns: {
@@ -10,7 +9,7 @@ module.exports = new EntitySchema({
             generated: true,
         },
         date: {
-            type: 'date',
+            type: Date,
             nullable: false,
         },
         hour: {
@@ -22,8 +21,8 @@ module.exports = new EntitySchema({
             length: 255,
             nullable: false,
         },
-
     },
+
     relations: {
         patientRecord: {
             type: 'many-to-one',
@@ -31,9 +30,8 @@ module.exports = new EntitySchema({
             cascade: true,
         },
         specialist: {
-            type: 'one-to-one',
+            type: 'many-to-one',
             target: 'Specialist',
-            joinColumn: true,
         },
     },
 

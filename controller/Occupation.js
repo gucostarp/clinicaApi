@@ -48,6 +48,7 @@ const insert = async(req, res) => {
         const insertedOccupation = await repository.insert(req.body);
         res.status(201).json(insertedOccupation);
     } catch (error) {
+        console.log(error)
         res.status(404).json({ message: 'Erro ao criar occupation' });
     }
 };

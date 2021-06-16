@@ -8,7 +8,7 @@ module.exports = {
 
         const connection = getConnection();
 
-        const specialists = await connection.getRepository('Specialist').find(data);
+        const specialists = await connection.getRepository('Specialist').find(findData);
         return (specialists);
 
     },

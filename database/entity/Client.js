@@ -15,18 +15,18 @@ module.exports = new EntitySchema({
         },
         cpf: {
             type: String,
-            length: 11,
+            length: 14,
             nullable: false,
             unique: true,
         },
         phone: {
             type: String,
-            length: 11,
+            length: 14,
             nullable: true,
         },
         cellphone: {
             type: String,
-            length: 11,
+            length: 14,
             nullable: false,
         },
         email: {
@@ -45,9 +45,8 @@ module.exports = new EntitySchema({
     },
     relations: {
         address: {
-            type: 'one-to-one',
+            type: 'one-to-many',
             target: 'Address',
-            joinColumn: true,
             cascade: true,
             nullable: false,
         },
