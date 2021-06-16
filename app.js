@@ -5,8 +5,8 @@ const logger = require('morgan');
 const startDB = require('./database/index');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger.json');
+// const swaggerUi = require('swagger-ui-express');
+// const swaggerDocument = require('./swagger.json');
 
 dotenv.config();
 
