@@ -8,8 +8,8 @@ const patientRecordHistoryEntity = require('./database/entity/PatientRecordHisto
 const userEntity = require('./database/entity/User');
 require('dotenv/config');
 
-// const redis = require("redis");
-// const client = redis.createClient(process.env.REDIS_URL);
+const redis = require("redis");
+const client = redis.createClient(process.env.REDIS_URL);
 let db = {
 
     type: 'postgres',
@@ -35,7 +35,7 @@ let db = {
     },
 };
 if (process.env.NODE_ENV == 'production') {
-    // const client = redis.createClient(process.env.REDIS_URL);
+    const client = redis.createClient(process.env.REDIS_URL);
 
     db = {
         type: 'postgres',
