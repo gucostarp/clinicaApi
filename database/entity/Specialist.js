@@ -37,9 +37,10 @@ module.exports = new EntitySchema({
     },
     relations: {
         address: {
-            type: 'one-to-many',
+            type: 'one-to-one',
             target: 'Address',
             cascade: true,
+            joinColumn: 'true',
             nullable: false,
         },
         occupation: {
