@@ -1,4 +1,5 @@
 const { getConnection } = require('typeorm');
+const { cpf } = require('cpf-cnpj-validator');
 
 module.exports = {
 
@@ -37,10 +38,13 @@ module.exports = {
     async insert(client) {
         const connection = getConnection();
 
-        const insertedClient = await connection.getRepository('Client').save(client);
+        if (cpf.isValid(client.cpf)) {
 
-
-        return insertedClient;
+            const insertedClient = await connection.getRepository('Client').save(client);
+            return insertedClient;
+        } else {
+            return { message: 'Digite um CPF válido!' }
+        }
 
     },
 

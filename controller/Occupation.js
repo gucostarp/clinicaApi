@@ -6,7 +6,7 @@ const get = async(req, res) => {
         const occupations = await repository.list(req.body);
         res.status(200).json(occupations);
     } catch (error) {
-        res.status(404).json({ message: 'Erro ao listar profissões' });
+        res.status(404).json({ message: 'Error listing occupations.' });
     }
 };
 
@@ -16,7 +16,7 @@ const getOne = async(req, res) => {
         const occupations = await repository.detail(req.params.id);
         res.status(200).json(occupations);
     } catch (error) {
-        res.status(404).json({ message: 'Erro ao listar occupation' });
+        res.status(404).json({ message: 'Error listing occupation.' });
     }
 };
 
@@ -26,7 +26,7 @@ const deleteOne = async(req, res) => {
         const occupations = await repository.delete(req.params.id);
         res.status(200).json(occupations);
     } catch (error) {
-        res.status(404).json({ message: 'Erro ao deletar occupation' });
+        res.status(404).json({ message: 'Error deleting occupations.' });
     }
 };
 
@@ -38,7 +38,7 @@ const update = async(req, res) => {
         const occupations = await repository.update(id, fields);
         res.status(200).json(occupations);
     } catch (error) {
-        res.status(404).json({ message: 'Erro ao atualizar dados da occupation' });
+        res.status(404).json({ message: 'Error updating occupation.' });
     }
 };
 
@@ -49,7 +49,7 @@ const insert = async(req, res) => {
         res.status(201).json(insertedOccupation);
     } catch (error) {
         console.log(error)
-        res.status(404).json({ message: 'Erro ao criar occupation' });
+        res.status(404).json({ message: 'Error inserting occupation.' });
     }
 };
 

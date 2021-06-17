@@ -49,7 +49,7 @@ const insert = async(req, res) => {
         res.status(201).json(insertedPatientRecord);
     } catch (error) {
         console.log(error)
-        res.status(404).json({ message: 'Error when inserting patient record.' });
+        res.status(404).json({ message: 'Error inserting patient record.' });
     }
 };
 
