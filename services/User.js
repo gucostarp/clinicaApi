@@ -49,6 +49,7 @@ module.exports = {
     async delete(id) {
         const connection = getConnection();
 
+
         await connection.getRepository('User').delete(id);
         return { message: 'Usuário excluído' };
 
@@ -57,15 +58,36 @@ module.exports = {
     async insert(user) {
         const connection = await getConnection();
 
-        const hash = bcrypt.hashSync(user.password, 10);
+        const errors = [];
 
-        const user2 = user;
-        user2.password = hash;
+        const findUser = await connection.getRepository('User').findOne({ where: { username: user.username } })
+        if (findUser) {
+            errors.push({ message: 'Usuário já cadastrado!' })
+        }
 
-        const insertedUser = await connection.getRepository("User").save(user2);
-        delete insertedUser.password, insertedUser.username;
+        if (user.password < 6) {
+            errors.push({ message: 'Password deve ter mais que 6 caracteres!' })
+        }
 
-        return insertedUser;
 
+        if (user.username.length > 20) {
+            errors.push({ message: 'O usuário pode ter no máximo 20 caracteres!' })
+        }
+
+        if (errors.length == 0) {
+
+            const hash = bcrypt.hashSync(user.password, 10);
+
+            const user2 = user;
+            user2.password = hash;
+
+            const insertedUser = await connection.getRepository("User").save(user2);
+            delete insertedUser.password, insertedUser.username;
+
+            return insertedUser;
+
+        } else {
+            return response.status(404).json(errors)
+        }
     },
 };
