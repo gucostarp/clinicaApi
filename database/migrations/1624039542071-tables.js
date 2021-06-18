@@ -24,6 +24,7 @@ module.exports = class tables1624039542071 {
         await queryRunner.query(`ALTER TABLE "patient_record_history" ADD CONSTRAINT "FK_4d1fb6bd1d00de9fe72d6b5512b" FOREIGN KEY ("specialistId") REFERENCES "specialist"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`);
     }
 
+
     async down(queryRunner) {
         await queryRunner.query(`ALTER TABLE "patient_record_history" DROP CONSTRAINT "FK_4d1fb6bd1d00de9fe72d6b5512b"`);
         await queryRunner.query(`ALTER TABLE "patient_record_history" DROP CONSTRAINT "FK_7e4a60d274aba2f65fc409f53dd"`);
