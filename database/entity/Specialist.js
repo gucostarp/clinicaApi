@@ -20,12 +20,12 @@ module.exports = new EntitySchema({
         },
         phone: {
             type: String,
-            length: 14,
+            length: 15,
             nullable: true,
         },
         cellphone: {
             type: String,
-            length: 14,
+            length: 15,
             nullable: false,
         },
         email: {

@@ -2,13 +2,17 @@ const express = require('express');
 const router = express.Router();
 const Controllers = require('../controller/index');
 const authMiddleware = require('../Middleware/auth');
-
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('../swagger.json');
 
 
 router.post('/auth/', Controllers.Auth.login);
+router.post('/refreshtoken/', Controllers.Auth.refreshToken);
 router.post('/users', Controllers.User.insert);
+router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 router.use(authMiddleware);
+
 
 router.get('/users/', Controllers.User.get);
 router.get('/users/:id', Controllers.User.getOne);

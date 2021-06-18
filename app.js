@@ -5,17 +5,15 @@ const logger = require('morgan');
 const startDB = require('./database/index');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const redis = require("redis");
-// const swaggerUi = require('swagger-ui-express');
-// const swaggerDocument = require('./swagger.json');
+
 
 dotenv.config();
-const client = redis.createClient(process.env.REDIS_URL);
+
 
 
 const Router = require('./routes/index')
 
-// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 const app = express();
 
 (async() => {
