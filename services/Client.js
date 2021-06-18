@@ -37,7 +37,7 @@ module.exports = {
 
     async insert(client) {
         const connection = getConnection();
-        //Verifica duplicidade de email
+
         const errors = [];
 
         const findEmail = await connection.getRepository('Client').findOne({ where: { email: client.email } })
@@ -54,7 +54,7 @@ module.exports = {
             errors.push({ message: 'Digite um CPF válido!' })
         }
 
-        if (errors.lenght == 0) {
+        if (errors.length == 0) {
             const insertedClient = await connection.getRepository('Client').save(client);
             return insertedClient;
 

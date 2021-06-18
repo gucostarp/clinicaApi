@@ -1,5 +1,5 @@
 const repository = require('../services/Client');
-const patientRecordRepository = require('../services/PatientRecord')
+
 
 const get = async(req, res) => {
 

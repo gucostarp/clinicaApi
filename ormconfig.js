@@ -34,9 +34,9 @@ let db = {
     },
 };
 if (process.env.NODE_ENV == 'production') {
-    const redis = require("redis");
+    // const redis = require("redis");
 
-    const client = redis.createClient(process.env.REDIS_URL);
+    // redis.createClient(process.env.REDIS_URL);
 
     db = {
         type: 'postgres',
