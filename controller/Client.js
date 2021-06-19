@@ -1,7 +1,8 @@
 const repository = require('../services/Client');
+const { getRepository } = require('typeorm');
+const { cpf } = require('cpf-cnpj-validator');
 
-
-const get = async(req, res) => {
+get = async(req, res) => {
 
     try {
         const client = await repository.list(req.body);
@@ -12,7 +13,7 @@ const get = async(req, res) => {
     }
 };
 
-const getOne = async(req, res) => {
+getOne = async(req, res) => {
 
     try {
         const client = await repository.detail(req.params.id);
@@ -22,7 +23,7 @@ const getOne = async(req, res) => {
     }
 };
 
-const deleteOne = async(req, res) => {
+deleteOne = async(req, res) => {
 
     try {
         const client = await repository.delete(req.params.id);
@@ -32,7 +33,7 @@ const deleteOne = async(req, res) => {
     }
 };
 
-const update = async(req, res) => {
+update = async(req, res) => {
 
     try {
         const { id } = req.params;
@@ -44,23 +45,45 @@ const update = async(req, res) => {
     }
 };
 
-const insert = async(req, res) => {
+insert = async(req, res) => {
 
-    try {
-        const insertedClient = await repository.insert(req.body);
+        const { email, cpf: cpfClient } = req.body;
 
-        res.status(201).json(insertedClient);
-    } catch (error) {
-        console.log(error)
-        res.status(404).json({ message: 'Error inserting client.' });
-    }
-};
+        try {
+            if (!cpf.isValid(cpfClient)) {
+                return res.status(403).json({ message: 'Digite um CPF válido!' })
+            }
 
+            const repo = getRepository('Client');
+            const findEmail = await repo.findOne({
+                where: { email },
+            });
+            if (findEmail) {
+                return res.status(403).json({ message: 'Email já cadastrado.' });
+            }
+            const findCpf = await repo.findOne({
+                where: { cpf: cpfClient },
+            });
+            if (findCpf) {
+                return res.status(403).json({ message: 'CPF já cadastrado.' });
+            }
 
-module.exports = {
-    get,
-    getOne,
-    deleteOne,
-    update,
-    insert
-};
+            const insertedClient = await repository.insert(req.body);
+
+            res.status(201).json(insertedClient);
+
+        } catch (error) {
+            console.log(error)
+
+            return res.status(404).json({ message: 'Error inserting client.' });
+        }
+
+    },
+
+    module.exports = {
+        get,
+        getOne,
+        deleteOne,
+        update,
+        insert
+    };

@@ -1,4 +1,6 @@
 const repository = require('../services/User')
+const { getRepository } = require('typeorm');
+
 
 get = async(req, res) => {
 
@@ -44,13 +46,27 @@ update = async(req, res) => {
 
 insert = async(req, res) => {
 
+    const { username, password } = req.body;
+
     try {
+        const repo = getRepository('User');
+        const findUser = await repo.findOne({
+            where: { username },
+        });
+        if (findUser) {
+            return res.status(403).json({ message: 'Nome de usuário já existe.' });
+        }
+        if (username.length > 20) {
+            return res.status(403).json({ message: 'Nome de usuário deve ter menos de 20 caracteres.' });
+        }
+        if (password.length < 6) {
+            return res.status(403).json({ message: 'A senha deve ter mais de 6 caracteres.' });
+        }
+
         const insertedUser = await repository.insert(req.body);
         res.status(201).json(insertedUser);
     } catch (error) {
-
-        console.log(error)
-        res.status(401).json({ message: 'Error inserting user.' });
+        return res.status(401).json({ message: 'Error inserting user.' });
 
     }
 };
@@ -61,4 +77,5 @@ module.exports = {
     deleteOne,
     update,
     insert,
+
 };

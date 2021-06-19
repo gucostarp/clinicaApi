@@ -1,5 +1,4 @@
 const { getConnection } = require('typeorm');
-const { cpf } = require('cpf-cnpj-validator');
 
 module.exports = {
 
@@ -38,29 +37,10 @@ module.exports = {
     async insert(client) {
         const connection = getConnection();
 
-        const errors = [];
+        const insertedClient = await connection.getRepository('Client').save(client);
+        return insertedClient;
 
-        const findEmail = await connection.getRepository('Client').findOne({ where: { email: client.email } })
-        if (findEmail) {
-            return errors.push({ message: 'Email já cadastrado!' })
-        }
 
-        const findCpf = await connection.getRepository('Client').findOne({ where: { cpf: client.cpf } })
-        if (findCpf) {
-            return errors.push({ message: 'CPF já cadastrado!' })
-        }
-
-        if (!cpf.isValid(client.cpf)) {
-            return errors.push({ message: 'Digite um CPF válido!' })
-        }
-
-        if (errors.length == 0) {
-            const insertedClient = await connection.getRepository('Client').save(client);
-            return insertedClient;
-
-        } else {
-            return errors;
-        }
     },
 
 }

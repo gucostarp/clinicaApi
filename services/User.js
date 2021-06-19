@@ -58,36 +58,18 @@ module.exports = {
     async insert(user) {
         const connection = await getConnection();
 
-        const errors = [];
-
-        const findUser = await connection.getRepository('User').findOne({ where: { username: user.username } })
-        if (findUser) {
-            return errors.push({ message: 'Usuário já cadastrado!' })
-        }
-
-        if (user.password.length < 6) {
-            return errors.push({ message: 'Password deve ter mais que 6 caracteres!' })
-        }
 
 
-        if (user.username.length > 20) {
-            return errors.push({ message: 'O usuário pode ter no máximo 20 caracteres!' })
-        }
+        const hash = bcrypt.hashSync(user.password, 10);
 
-        if (errors.length == 0) {
+        const user2 = user;
+        user2.password = hash;
 
-            const hash = bcrypt.hashSync(user.password, 10);
+        const insertedUser = await connection.getRepository("User").save(user2);
+        delete insertedUser.password, insertedUser.username;
 
-            const user2 = user;
-            user2.password = hash;
+        return insertedUser;
 
-            const insertedUser = await connection.getRepository("User").save(user2);
-            delete insertedUser.password, insertedUser.username;
 
-            return insertedUser;
-
-        } else {
-            return errors;
-        }
     },
 };
