@@ -9,17 +9,13 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-
-
 const Router = require('./routes/index')
-
 
 const app = express();
 
 (async() => {
     await startDB();
 })()
-
 
 app.use(cors());
 app.use(logger('dev'));
@@ -29,6 +25,5 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', Router);
-
 
 module.exports = app;

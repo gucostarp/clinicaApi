@@ -18,11 +18,16 @@ No terminal, clone o projeto:
 ```
 git clone https://github.com/gucostarp/clinicaApi.git
 ```
+
 Edite o arquivo "env_pattern" com as informações do banco de dados, conforme abaixo:
 
 ```
+Formato padrão do DATABASE_URL: postgres://username:password@host:porta/nome_do_banco
+```
 
-DATABASE_URL=U URL da do seu banco de dados
+```
+DATABASE_URL=U URL da do seu banco de dados (vide formato padrão acima)
+
 ENVIRONMENT=DEV
 
 ##################
@@ -43,6 +48,16 @@ cd clinicaApi
 Instale as dependências:
 ```
 yarn install
+```
+
+Gere as migrations:
+```
+npx typeorm migration:generate -n tables -o
+```
+
+Rode as migrations:
+```
+npx typeorm migration:run
 ```
 
 Execute a aplicação:
@@ -77,12 +92,12 @@ Grupo 3 - Turma 2
 
 ## 📄 Licença
 
-Este projeto está sob a licença da (Clinica SuperAÇÃO).
+Este projeto está sob a licença da Clinica SuperAÇÃO.
 
 ## 🎁 Agradecimentos
 
 * Agradecemos, primeiramente, a oportunidade da Afya, junto com a Gama Academy, de nos proporcionar tanto conhecimento, através de seu programa Afya Labs. 📢
-* Agradecemos, também, a nossos professores, responsáveis por chegarmos até aqui. 
+* Agradecemos, também, a nossos professores, Douglas Morais e Danilo Aparecido, responsáveis por chegarmos até aqui. 
 * E, não menos importante, aos nossos mentores Léo Berdu, Luis Junior e Guilherme Almeida, por acreditar em nosso grupo 🤓.
 
 ---

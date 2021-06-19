@@ -18,6 +18,10 @@ module.exports = new EntitySchema({
             length: 255,
             nullable: false,
         },
+        number: {
+            type: Number,
+            nullable: true,
+        },
         neighborhood: {
             type: String,
             length: 100,

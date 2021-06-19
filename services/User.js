@@ -87,7 +87,7 @@ module.exports = {
             return insertedUser;
 
         } else {
-            return response.status(404).json(errors)
+            return errors;
         }
     },
 };
