@@ -65,7 +65,7 @@ module.exports = {
             errors.push({ message: 'Usuário já cadastrado!' })
         }
 
-        if (user.password < 6) {
+        if (user.password.length < 6) {
             errors.push({ message: 'Password deve ter mais que 6 caracteres!' })
         }
 

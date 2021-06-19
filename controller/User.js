@@ -31,6 +31,7 @@ deleteOne = async(req, res) => {
 };
 
 update = async(req, res) => {
+
     try {
         const { id } = req.params;
         const fields = req.body;
@@ -42,8 +43,6 @@ update = async(req, res) => {
 };
 
 insert = async(req, res) => {
-
-
 
     try {
         const insertedUser = await repository.insert(req.body);
