@@ -42,16 +42,16 @@ module.exports = {
 
         const findEmail = await connection.getRepository('Client').findOne({ where: { email: client.email } })
         if (findEmail) {
-            errors.push({ message: 'Email já cadastrado!' })
+            return errors.push({ message: 'Email já cadastrado!' })
         }
 
         const findCpf = await connection.getRepository('Client').findOne({ where: { cpf: client.cpf } })
         if (findCpf) {
-            errors.push({ message: 'CPF já cadastrado!' })
+            return errors.push({ message: 'CPF já cadastrado!' })
         }
 
         if (!cpf.isValid(client.cpf)) {
-            errors.push({ message: 'Digite um CPF válido!' })
+            return errors.push({ message: 'Digite um CPF válido!' })
         }
 
         if (errors.length == 0) {

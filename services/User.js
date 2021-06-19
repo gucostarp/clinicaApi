@@ -62,16 +62,16 @@ module.exports = {
 
         const findUser = await connection.getRepository('User').findOne({ where: { username: user.username } })
         if (findUser) {
-            errors.push({ message: 'Usuário já cadastrado!' })
+            return errors.push({ message: 'Usuário já cadastrado!' })
         }
 
         if (user.password.length < 6) {
-            errors.push({ message: 'Password deve ter mais que 6 caracteres!' })
+            return errors.push({ message: 'Password deve ter mais que 6 caracteres!' })
         }
 
 
         if (user.username.length > 20) {
-            errors.push({ message: 'O usuário pode ter no máximo 20 caracteres!' })
+            return errors.push({ message: 'O usuário pode ter no máximo 20 caracteres!' })
         }
 
         if (errors.length == 0) {
