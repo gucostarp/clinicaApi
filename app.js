@@ -5,7 +5,8 @@ const logger = require('morgan');
 const startDB = require('./database/index');
 const cors = require('cors');
 const dotenv = require('dotenv');
-
+const bodyParser = require('body-parser');
+const { pagination } = require('typeorm-pagination');
 
 dotenv.config();
 
@@ -17,6 +18,8 @@ const app = express();
     await startDB();
 })()
 
+app.use(bodyParser.json());
+app.use(pagination);
 app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());

@@ -5,13 +5,14 @@ const { cpf } = require('cpf-cnpj-validator');
 get = async(req, res) => {
 
     try {
-        const client = await repository.list(req.body);
+        const client = await repository.list(req.body, req.query);
         res.status(200).json(client);
     } catch (error) {
-        console.log(error)
         res.status(404).json({ message: 'Error listing clients.' });
     }
 };
+
+
 
 getOne = async(req, res) => {
 

@@ -26,8 +26,8 @@
         "sqlite3": "^5.0.2",
         "swagger": "^0.7.5",
         "swagger-ui-express": "^4.1.6",
-        "typeorm": "^0.2.32",
-        "validator": "^13.6.0"
+        "typeorm": "^0.2.32"
+
     },
     "devDependencies": {
         "eslint": "^7.27.0",

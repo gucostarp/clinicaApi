@@ -4,18 +4,21 @@ const bcrypt = require('bcrypt');
 
 module.exports = {
 
-    async list(data) {
+    async list(data, pages) {
         const findData = { select: ['id', 'name', 'username'] };
         if (data) { findData.where = data };
         const connection = getConnection();
 
-        const users = await connection.getRepository('User')
-            .createQueryBuilder(data)
-            .take(5)
-            .skip(0)
-            .getMany()
-        return users;
+        const take = 10;
+        const pagination = !pages.page ? 1 : parseInt(pages.page);
+        const total = await connection.getRepository('User').find(data);
+        const users = await connection.getRepository('User').find({ take, skip: take * (pagination - 1) });
 
+        return {
+            page: pagination,
+            allUsers: total.length,
+            data: users
+        };
     },
 
     async detail(id) {
@@ -57,7 +60,6 @@ module.exports = {
 
     async insert(user) {
         const connection = await getConnection();
-
 
 
         const hash = bcrypt.hashSync(user.password, 10);
