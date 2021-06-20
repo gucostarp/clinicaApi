@@ -8,7 +8,6 @@ const patientRecordHistoryEntity = require('./database/entity/PatientRecordHisto
 const userEntity = require('./database/entity/User');
 require('dotenv/config');
 
-
 let db = {
 
     type: 'postgres',
@@ -34,9 +33,6 @@ let db = {
     },
 };
 if (process.env.NODE_ENV == 'production') {
-    // const redis = require("redis");
-
-    // redis.createClient(process.env.REDIS_URL);
 
     db = {
         type: 'postgres',

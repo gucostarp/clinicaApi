@@ -71,7 +71,6 @@ Pronto, agora é possível acessar a aplicação a partir da rota http://localho
 
 - [Node.js](https://nodejs.org/en/)
 - [Express.js](https://expressjs.com/pt-br/)
-- [Express Validator](https://express-validator.github.io/)
 - [TypeORM](https://typeorm.io/#/)
 - [Bcrypt](https://www.npmjs.com/package/bcrypt)
 - [JWT](https://jwt.io/)

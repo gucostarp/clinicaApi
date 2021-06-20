@@ -10,13 +10,13 @@ async function login(req, res) {
         const user = await repository.list({ username });
 
         if (!user) {
-            return res.status(401).json(req.t('wrong_login_password'));
+            return res.status(401).json({ message: req.t('wrong_login_password') });
         }
 
         const compareHash = await bcrypt.compare(password, user.password);
 
         if (!compareHash) {
-            return res.status(401).json(req.t('wrong_login_password'));
+            return res.status(401).json({ message: req.t('wrong_login_password') });
         }
 
         delete user.password;
@@ -36,7 +36,7 @@ async function refreshToken(req, res) {
         user.token = JwToken.makeToken(user);
         return res.status(200).json(user);
     } catch (err) {
-        res.status(401).json(req.t('unauthorized'));
+        res.status(401).json({ message: req.t('unauthorized') });
     }
 }
 

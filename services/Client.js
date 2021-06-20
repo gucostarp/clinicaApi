@@ -34,8 +34,6 @@ module.exports = {
         repository.merge(client, fields)
         const result = await repository.save(client)
         return result;
-
-
     },
 
     async delete(id) {

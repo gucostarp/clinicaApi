@@ -8,7 +8,7 @@ get = async(req, res) => {
         const client = await repository.list(req.body, req.query);
         res.status(200).json(client);
     } catch (error) {
-        res.status(404).json(req.t('client_list_error'));
+        res.status(404).json({ message: req.t('client_list_error') });
     }
 };
 
@@ -18,7 +18,7 @@ getOne = async(req, res) => {
         const client = await repository.detail(req.params.id);
         res.status(200).json(client);
     } catch (error) {
-        res.status(404).json(req.t('client_list_error'));
+        res.status(404).json({ message: req.t('client_list_error') });
     }
 };
 
@@ -31,7 +31,7 @@ deleteOne = async(req, res) => {
         res.status(200).json(client);
     } catch (error) {
         console.log(error)
-        res.status(404).json(req.t('client_deleting_error'));
+        res.status(404).json({ message: req.t('client_deleting_error') });
     }
 
 };
@@ -45,7 +45,7 @@ update = async(req, res) => {
         res.status(200).json(client);
     } catch (error) {
         console.log(error)
-        res.status(404).json(req.t('client_updating_error'));
+        res.status(404).json({ message: req.t('client_updating_error') });
     }
 };
 
@@ -55,7 +55,7 @@ insert = async(req, res) => {
 
         try {
             if (!cpf.isValid(cpfClient)) {
-                return res.status(403).json(req.t('client_cpf_validate'))
+                return res.status(403).json({ message: req.t('client_cpf_validate') })
             }
 
             const repo = getRepository('Client');
@@ -63,13 +63,13 @@ insert = async(req, res) => {
                 where: { email },
             });
             if (findEmail) {
-                return res.status(403).json(req.t('client_email_duplicate'));
+                return res.status(403).json({ message: req.t('client_email_duplicate') });
             }
             const findCpf = await repo.findOne({
                 where: { cpf: cpfClient },
             });
             if (findCpf) {
-                return res.status(403).json(req.t('client_cpf_duplicate'));
+                return res.status(403).json({ message: req.t('client_cpf_duplicate') });
             }
 
             const insertedClient = await repository.insert(req.body);
@@ -77,7 +77,7 @@ insert = async(req, res) => {
             res.status(201).json(insertedClient);
 
         } catch (error) {
-            return res.status(404).json(req.t('client_create_error'));
+            return res.status(404).json({ message: req.t('client_create_error') });
         }
     },
 

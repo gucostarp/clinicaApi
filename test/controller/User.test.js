@@ -4,10 +4,7 @@ startDB = require('../../database/index')
 
 beforeAll(async() => {
     await startDB();
-
-
 })
-
 
 describe('User Controller', () => {
 
