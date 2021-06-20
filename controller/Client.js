@@ -12,8 +12,6 @@ get = async(req, res) => {
     }
 };
 
-
-
 getOne = async(req, res) => {
 
     try {
@@ -26,12 +24,16 @@ getOne = async(req, res) => {
 
 deleteOne = async(req, res) => {
 
+    const { id } = req.params;
     try {
-        const client = await repository.delete(req.params.id);
+
+        const client = await repository.delete(id);
         res.status(200).json(client);
     } catch (error) {
+        console.log(error)
         res.status(404).json({ message: 'Error deleting clients.' });
     }
+
 };
 
 update = async(req, res) => {
@@ -76,7 +78,6 @@ insert = async(req, res) => {
         } catch (error) {
             return res.status(404).json({ message: 'Error inserting client.' });
         }
-
     },
 
     module.exports = {

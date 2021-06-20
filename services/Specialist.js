@@ -18,7 +18,6 @@ module.exports = {
             allUsers: total.length,
             data: specialists
         };
-
     },
 
     async detail(id) {
@@ -46,7 +45,6 @@ module.exports = {
 
         await connection.getRepository('Specialist').delete(id);
         return { message: 'Specialist excluído' };
-
     },
 
     async insert(data) {
@@ -54,7 +52,6 @@ module.exports = {
 
         const insertedSpecialist = await connection.getRepository('Specialist').save(data);
         return insertedSpecialist;
-
     },
 
 };

@@ -1,6 +1,7 @@
 const repository = require('../services/PatientRecord');
 
 const get = async(req, res) => {
+
     try {
         const patientRecords = await repository.list(req.query);
         res.status(200).json(patientRecords);
@@ -10,6 +11,7 @@ const get = async(req, res) => {
 };
 
 const getOne = async(req, res) => {
+
     try {
         const patientRecords = await repository.detail(req.params.id);
         res.status(200).json(patientRecords);
@@ -19,6 +21,7 @@ const getOne = async(req, res) => {
 };
 
 const deleteOne = async(req, res) => {
+
     try {
         const patientRecords = await repository.delete(req.params.id);
         res.status(200).json(patientRecords);
@@ -28,6 +31,7 @@ const deleteOne = async(req, res) => {
 };
 
 const update = async(req, res) => {
+
     try {
         const { id } = req.params;
         const fields = req.body;
@@ -39,6 +43,7 @@ const update = async(req, res) => {
 };
 
 const insert = async(req, res) => {
+
     try {
         const insertedPatientRecord = await repository.insert(req.body);
         res.status(201).json(insertedPatientRecord);

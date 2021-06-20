@@ -31,7 +31,6 @@ module.exports = {
 
         await connection.getRepository('Client').update(id, fields);
         return getClient(id);
-
     },
 
     async delete(id) {
@@ -39,7 +38,6 @@ module.exports = {
 
         await connection.getRepository('Client').delete(id);
         return { message: 'Client excluído' };
-
     },
 
     async insert(client) {
@@ -47,8 +45,6 @@ module.exports = {
 
         const insertedClient = await connection.getRepository('Client').save(client);
         return insertedClient;
-
-
     },
 
 }

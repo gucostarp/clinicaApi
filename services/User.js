@@ -22,12 +22,10 @@ module.exports = {
     },
 
     async detail(id) {
-
         const connection = getConnection();
 
         const users = await connection.getRepository('User').findOne(id, { select: ['id', 'name', 'username'] });
         return users;
-
     },
 
     async update(id, fields) {
@@ -46,21 +44,17 @@ module.exports = {
         delete updatedUser.password;
 
         return updatedUser;
-
     },
 
     async delete(id) {
         const connection = getConnection();
 
-
         await connection.getRepository('User').delete(id);
         return { message: 'Usuário excluído' };
-
     },
 
     async insert(user) {
         const connection = await getConnection();
-
 
         const hash = bcrypt.hashSync(user.password, 10);
 
@@ -71,7 +65,5 @@ module.exports = {
         delete insertedUser.password, insertedUser.username;
 
         return insertedUser;
-
-
     },
 };

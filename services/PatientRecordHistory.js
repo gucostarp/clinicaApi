@@ -22,7 +22,6 @@ module.exports = {
 
         const patientRecord = await connection.getRepository('PatientRecordHistory').findOne(id, { relations: ['specialist, patientRecord'] });
         return (patientRecord);
-
     },
 
     async update(id, fields) {
@@ -30,7 +29,6 @@ module.exports = {
 
         await connection.getRepository('PatientRecordHistory').update(id, fields, { relations: ['specialist, patientRecord'] });
         return getPatientRecordHistory(id);
-
     },
 
     async delete(id) {
@@ -38,7 +36,6 @@ module.exports = {
 
         await connection.getRepository('PatientRecordHistory').delete(id);
         return { message: 'PatientRecordHistory excluído' };
-
     },
 
     async insert(patientRecord) {
@@ -46,7 +43,6 @@ module.exports = {
 
         const insertedPatientRecordHistory = await connection.getRepository('PatientRecordHistory').save(patientRecord);
         return insertedPatientRecordHistory;
-
     },
 
 };

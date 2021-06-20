@@ -15,7 +15,6 @@ module.exports = {
             allUsers: total.length,
             data: occupations
         };
-
     },
 
     async detail(id) {
@@ -23,7 +22,6 @@ module.exports = {
 
         const specialist = await connection.getRepository('Occupation').findOne(id);
         return (specialist);
-
     },
 
     async update(id, fields) {
@@ -31,7 +29,6 @@ module.exports = {
 
         await connection.getRepository('Occupation').update(id, fields);
         return getOccupation(id);
-
     },
 
     async delete(id) {
@@ -39,7 +36,6 @@ module.exports = {
 
         await connection.getRepository('Occupation').delete(id);
         return { message: 'Occupation excluído' };
-
     },
 
     async insert(profissao) {
@@ -47,7 +43,6 @@ module.exports = {
 
         const insertedOccupation = await connection.getRepository('Occupation').save(profissao);
         return insertedOccupation;
-
     },
 
 };

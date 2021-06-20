@@ -12,7 +12,6 @@ module.exports = {
         const total = await connection.getRepository('Attendance').find(findData);
         const attendance = await connection.getRepository('Attendance').find(findData, { take, skip: take * (pagination - 1) });
 
-
         return {
             page: pagination,
             allAttendance: total.length,
@@ -26,7 +25,6 @@ module.exports = {
 
         const attendance = await connection.getRepository('Attendance').findOne(id, { relations: ['client', 'specialist'] });
         return (attendance);
-
     },
 
     async update(id, fields) {
@@ -34,8 +32,6 @@ module.exports = {
 
         await connection.getRepository('Attendance').update(id, fields, { relations: ['client', 'specialist'] });
         return detail(id);
-
-
     },
 
     async delete(id) {
@@ -43,7 +39,6 @@ module.exports = {
 
         await connection.getRepository('Attendance').delete(id);
         return { message: 'Attendance deleted' };
-
     },
 
     async insert(attendance) {
@@ -51,7 +46,6 @@ module.exports = {
 
         const insertedAttendance = await connection.getRepository('Attendance').save(attendance);
         return insertedAttendance;
-
     }
 
 }

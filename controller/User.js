@@ -66,7 +66,6 @@ insert = async(req, res) => {
         if (password.length < 6) {
             return res.status(403).json({ message: 'A senha deve ter mais de 6 caracteres.' });
         }
-
         const insertedUser = await repository.insert(req.body);
         res.status(201).json(insertedUser);
     } catch (error) {
@@ -81,5 +80,4 @@ module.exports = {
     deleteOne,
     update,
     insert,
-
 };
