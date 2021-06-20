@@ -26,6 +26,21 @@
     "occupation_create_error": "Erro ao inserir profissão.",
     "occupation_uptading_error": "Erro ao atualizar profissão.",
     "occupation_deleting_error": "Erro ao deletar profissão.",
-    "occupation_list_error": "Erro ao listar profissão."
+    "occupation_list_error": "Erro ao listar profissão.",
+
+    "patient_record_create_error": "Erro ao inserir prontuário.",
+    "patient_record_uptading_error": "Erro ao atualizar prontuário.",
+    "patient_record_deleting_error": "Erro ao deletar prontuário.",
+    "patient_record_list_error": "Erro ao listar prontuário.",
+
+    "pat_record_history_create_error": "Erro ao inserir histórico do prontuário.",
+    "pat_record_history_uptading_error": "Erro ao atualizar histórico do prontuário.",
+    "pat_record_history_deleting_error": "Erro ao deletar histórico do prontuário.",
+    "pat_record_history_list_error": "Erro ao listar histórico do prontuário.",
+
+    "specialist_create_error": "Erro ao inserir especialista.",
+    "specialist_uptading_error": "Erro ao atualizar especialista.",
+    "specialist_deleting_error": "Erro ao deletar especialista.",
+    "specialist_list_error": "Erro ao listar especialista."
 
 }

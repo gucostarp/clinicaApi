@@ -7,7 +7,7 @@ const get = async(req, res) => {
         const specialists = await repository.list(req.body, req.query);
         res.status(200).json(specialists);
     } catch (error) {
-        res.status(404).json({ message: 'Error listing specialists.' });
+        res.status(404).json(req.t('specialist_list_error'));
     }
 };
 
@@ -17,7 +17,7 @@ const getOne = async(req, res) => {
         const specialists = await repository.detail(req.params.id);
         res.status(200).json(specialists);
     } catch (error) {
-        res.status(404).json({ message: 'Error listing specialist.' });
+        res.status(404).json(req.t('specialist_list_error'));
     }
 };
 
@@ -27,7 +27,7 @@ const deleteOne = async(req, res) => {
         const specialists = await repository.delete(req.params.id);
         res.status(200).json(specialists);
     } catch (error) {
-        res.status(404).json({ message: 'Error deleting specialist.' });
+        res.status(404).json(req.t('specialist_deleting_error'));
     }
 };
 
@@ -39,7 +39,7 @@ const update = async(req, res) => {
         const specialists = await repository.update(id, fields);
         res.status(200).json(specialists);
     } catch (error) {
-        res.status(404).json({ message: 'Error updating specialist.' });
+        res.status(404).json(req.t('specialist_updating_error'));
     }
 };
 
@@ -49,7 +49,7 @@ const insert = async(req, res) => {
         const insertedSpecialist = await repository.insert(req.body);
         res.status(201).json(insertedSpecialist);
     } catch (error) {
-        res.status(404).json({ message: 'Error inserting specialists.' });
+        res.status(404).json(req.t('specialist_create_error'));
     }
 };
 
