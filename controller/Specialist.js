@@ -4,7 +4,7 @@ const repository = require('../services/Specialist')
 const get = async(req, res) => {
 
     try {
-        const specialists = await repository.list(req.body);
+        const specialists = await repository.list(req.body, req.query);
         res.status(200).json(specialists);
     } catch (error) {
         res.status(404).json({ message: 'Error listing specialists.' });
@@ -49,7 +49,6 @@ const insert = async(req, res) => {
         const insertedSpecialist = await repository.insert(req.body);
         res.status(201).json(insertedSpecialist);
     } catch (error) {
-        console.log(error)
         res.status(404).json({ message: 'Error inserting specialists.' });
     }
 };

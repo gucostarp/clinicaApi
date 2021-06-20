@@ -74,8 +74,6 @@ insert = async(req, res) => {
             res.status(201).json(insertedClient);
 
         } catch (error) {
-            console.log(error)
-
             return res.status(404).json({ message: 'Error inserting client.' });
         }
 

@@ -3,7 +3,7 @@ const repository = require('../services/PatientRecordHistory');
 const get = async(req, res) => {
 
     try {
-        const patientRecords = await repository.list(req.body);
+        const patientRecords = await repository.list(req.query);
         res.status(200).json(patientRecords);
     } catch (error) {
         res.status(404).json({ message: 'Error listing patients record.' });
@@ -48,7 +48,6 @@ const insert = async(req, res) => {
         const insertedPatientRecord = await repository.insert(req.body);
         res.status(201).json(insertedPatientRecord);
     } catch (error) {
-        console.log(error)
         res.status(404).json({ message: 'Error inserting patient record.' });
     }
 };

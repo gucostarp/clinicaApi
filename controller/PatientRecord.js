@@ -2,7 +2,7 @@ const repository = require('../services/PatientRecord');
 
 const get = async(req, res) => {
     try {
-        const patientRecords = await repository.list(req.body);
+        const patientRecords = await repository.list(req.query);
         res.status(200).json(patientRecords);
     } catch (error) {
         res.status(404).json({ message: 'Error listing patient records.' });

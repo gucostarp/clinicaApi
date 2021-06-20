@@ -2,14 +2,22 @@ const { getConnection } = require('typeorm');
 
 module.exports = {
 
-    async list(data) {
+    async list(data, pages) {
         const findData = { relations: ['address', 'occupation'] };
         if (data) { findData.where = data }
 
         const connection = getConnection();
 
-        const specialists = await connection.getRepository('Specialist').find(findData);
-        return (specialists);
+        const take = 10;
+        const pagination = !pages.page ? 1 : parseInt(pages.page);
+        const total = await connection.getRepository('Specialist').find(findData);
+        const specialists = await connection.getRepository('Specialist').find(findData, { take, skip: take * (pagination - 1) });
+
+        return {
+            page: pagination,
+            allUsers: total.length,
+            data: specialists
+        };
 
     },
 

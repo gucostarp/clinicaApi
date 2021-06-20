@@ -2,18 +2,25 @@ const { getConnection } = require('typeorm');
 
 module.exports = {
 
-    async list() {
+    async list(pages) {
         const connection = getConnection();
 
-        const patientRecords = await connection.getRepository('PatientRecord').find({ relations: ['specialist, patientRecord'] });
-        return (patientRecords);
+        const take = 10;
+        const pagination = !pages.page ? 1 : parseInt(pages.page);
+        const total = await connection.getRepository('PatientRecordHistory').find({ relations: ['specialist', 'patientRecord'] });
+        const patientRecords = await connection.getRepository('PatientRecordHistory').find({ relations: ['specialist', 'patientRecord'], take, skip: take * (pagination - 1) });
 
+        return {
+            page: pagination,
+            allPRHistory: total.length,
+            data: patientRecords
+        };
     },
 
     async detail(id) {
         const connection = getConnection();
 
-        const patientRecord = await connection.getRepository('PatientRecord').findOne(id, { relations: ['specialist, patientRecord'] });
+        const patientRecord = await connection.getRepository('PatientRecordHistory').findOne(id, { relations: ['specialist, patientRecord'] });
         return (patientRecord);
 
     },
@@ -21,24 +28,24 @@ module.exports = {
     async update(id, fields) {
         const connection = getConnection();
 
-        await connection.getRepository('PatientRecord').update(id, fields, { relations: ['specialist, patientRecord'] });
-        return getPatientRecord(id);
+        await connection.getRepository('PatientRecordHistory').update(id, fields, { relations: ['specialist, patientRecord'] });
+        return getPatientRecordHistory(id);
 
     },
 
     async delete(id) {
         const connection = getConnection();
 
-        await connection.getRepository('PatientRecord').delete(id);
-        return { message: 'PatientRecord excluído' };
+        await connection.getRepository('PatientRecordHistory').delete(id);
+        return { message: 'PatientRecordHistory excluído' };
 
     },
 
     async insert(patientRecord) {
         const connection = getConnection();
 
-        const insertedPatientRecord = await connection.getRepository('PatientRecord').save(patientRecord);
-        return insertedPatientRecord;
+        const insertedPatientRecordHistory = await connection.getRepository('PatientRecordHistory').save(patientRecord);
+        return insertedPatientRecordHistory;
 
     },
 

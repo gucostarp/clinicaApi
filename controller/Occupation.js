@@ -3,7 +3,7 @@ const repository = require('../services/Occupation')
 const get = async(req, res) => {
 
     try {
-        const occupations = await repository.list(req.body);
+        const occupations = await repository.list(req.body, req.query);
         res.status(200).json(occupations);
     } catch (error) {
         res.status(404).json({ message: 'Error listing occupations.' });
@@ -48,7 +48,6 @@ const insert = async(req, res) => {
         const insertedOccupation = await repository.insert(req.body);
         res.status(201).json(insertedOccupation);
     } catch (error) {
-        console.log(error)
         res.status(404).json({ message: 'Error inserting occupation.' });
     }
 };

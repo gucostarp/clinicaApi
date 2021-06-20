@@ -27,8 +27,6 @@ async function login(req, res) {
         user.token = JwToken.makeToken(user);
         return res.status(200).json(user);
     } catch (erro) {
-        console.log(erro);
-
         return res.status(401).json(erro);
     }
 }
@@ -39,11 +37,9 @@ async function refreshToken(req, res) {
         const decoded = jwt.verify(token, process.env.SECRET);
 
         user = decoded
-        console.log(decoded)
         user.token = JwToken.makeToken(user);
         return res.status(200).json(user);
     } catch (err) {
-        console.log(err)
         res.status(401).json({ message: 'Acesso não autorizado!' });
     }
 }

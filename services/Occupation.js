@@ -2,11 +2,19 @@ const { getConnection } = require('typeorm');
 
 module.exports = {
 
-    async list() {
+    async list(data, pages) {
         const connection = getConnection();
 
-        const occupations = await connection.getRepository('Occupation').find();
-        return (occupations);
+        const take = 10;
+        const pagination = !pages.page ? 1 : parseInt(pages.page);
+        const total = await connection.getRepository('Occupation').find(data);
+        const occupations = await connection.getRepository('Occupation').find({ take, skip: take * (pagination - 1) });
+
+        return {
+            page: pagination,
+            allUsers: total.length,
+            data: occupations
+        };
 
     },
 
