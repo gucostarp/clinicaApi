@@ -1,0 +1,31 @@
+{
+    "wrong_login_password": "Usuário ou senha inválidos.",
+    "unauthorized": "Acesso não autorizado.",
+
+    "user_create_error": "Erro ao criar usuário.",
+    "user_password_lenght": "A senha deve ter mais de 6 caracteres.",
+    "user_username_length": "Nome de usuário deve ter menos de 20 caracteres.",
+    "user_username_duplicate": "Usuário já cadastrado.",
+    "user_uptading_error": "Erro ao atualizar usuário.",
+    "user_deleting_error": "Erro ao deletar usuário.",
+    "user_list_error": "Erro ao listar usuário.",
+
+    "client_create_error": "Erro ao inserir cliente.",
+    "client_uptading_error": "Erro ao atualizar cliente.",
+    "client_deleting_error": "Erro ao deletar cliente.",
+    "client_list_error": "Erro ao listar cliente.",
+    "client_cpf_validate": "CPF inválido.",
+    "client_cpf_duplicate": "CPF já cadastrado.",
+    "client_email_duplicate": "Email já cadastrado.",
+
+    "attendance_create_error": "Erro ao inserir atendimento.",
+    "attendance_uptading_error": "Erro ao atualizar atendimento.",
+    "attendance_deleting_error": "Erro ao deletar atendimento.",
+    "attendance_list_error": "Erro ao listar atendimento.",
+
+    "occupation_create_error": "Erro ao inserir profissão.",
+    "occupation_uptading_error": "Erro ao atualizar profissão.",
+    "occupation_deleting_error": "Erro ao deletar profissão.",
+    "occupation_list_error": "Erro ao listar profissão."
+
+}

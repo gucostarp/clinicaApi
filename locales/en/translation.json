@@ -1,0 +1,31 @@
+{
+    "wrong_login_password": "Wrong login or password.",
+    "unauthorized": "Unauthorized access.",
+
+    "user_create_error": "Error creating user.",
+    "user_password_lenght": "Password must be longer than 6 characters.",
+    "user_username_length": "Username must be less than 20 characters.",
+    "user_username_duplicate": "User already registered.",
+    "user_uptading_error": "Error updating user.",
+    "user_deleting_error": "Error deleting user.",
+    "user_list_error": "Error listing user.",
+
+    "client_create_error": "Error creating client.",
+    "client_uptading_error": "Error updating client.",
+    "client_deleting_error": "Error deleting client.",
+    "client_list_error": "Error listing client.",
+    "client_cpf_validate": "Invalid CPF",
+    "client_cpf_duplicate": "CPF already registered.",
+    "client_email_duplicate": "Email already registered.",
+
+    "attendance_create_error": "Error creating attendance.",
+    "attendance_uptading_error": "Error updating attendance.",
+    "attendance_deleting_error": "Error deleting attendance.",
+    "attendance_list_error": "Error listing attendance.",
+
+    "occupation_create_error": "Error creating occupation.",
+    "occupation_uptading_error": "Error updating occupation.",
+    "occupation_deleting_error": "Error deleting occupation.",
+    "occupation_list_error": "Error listing occupation."
+
+}

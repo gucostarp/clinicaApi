@@ -7,6 +7,6 @@ module.exports = async(req, res, next) => {
         req.userId = decoded.id;
         next();
     } catch (err) {
-        res.status(401).json({ message: 'Acesso não autorizado!' });
+        res.status(401).json(req.t('unauthorized'));
     }
 };

@@ -9,7 +9,7 @@ get = async(req, res) => {
 
         res.status(200).json(users);
     } catch (error) {
-        res.status(400).json({ message: 'Error listing users.' });
+        res.status(400).json(req.t('user_list_error'));
     }
 };
 
@@ -19,7 +19,7 @@ getOne = async(req, res) => {
         const users = await repository.detail(req.params.id);
         res.status(200).json(users);
     } catch (error) {
-        res.status(400).json({ message: 'Error listing user.' });
+        res.status(400).json(req.t('user_list_error'));
     }
 };
 
@@ -29,7 +29,7 @@ deleteOne = async(req, res) => {
         const users = await repository.delete(req.params.id);
         res.status(200).json(users);
     } catch (error) {
-        res.status(400).json({ message: 'Error deleting user.' });
+        res.status(400).json(req.t('user_deleting_error'));
     }
 };
 
@@ -41,7 +41,7 @@ update = async(req, res) => {
         const users = await repository.update(id, fields);
         res.status(200).json(users);
     } catch (error) {
-        res.status(400).json({ message: 'Error updating user.' });
+        res.status(400).json(req.t('user_uptading_error'));
     }
 };
 
@@ -55,18 +55,19 @@ insert = async(req, res) => {
             where: { username },
         });
         if (findUser) {
-            return res.status(403).json({ message: 'Nome de usuário já existe.' });
+            return res.status(403).json(req.t('user_username_duplicate'));
         }
         if (username.length > 20) {
-            return res.status(403).json({ message: 'Nome de usuário deve ter menos de 20 caracteres.' });
+            return res.status(403).json(req.t('user_username_length'));
         }
         if (password.length < 6) {
-            return res.status(403).json({ message: 'A senha deve ter mais de 6 caracteres.' });
+            return res.status(403).json(req.t('user_password_lenght'));
         }
         const insertedUser = await repository.insert(req.body);
         res.status(201).json(insertedUser);
     } catch (error) {
-        return res.status(401).json({ message: 'Error inserting user.' });
+        return res.status(401).json(req.t('user_create_error'));
+
 
     }
 };
