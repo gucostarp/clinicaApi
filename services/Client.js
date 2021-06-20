@@ -10,11 +10,11 @@ module.exports = {
         const take = 10;
         const pagination = !pages.page ? 1 : parseInt(pages.page);
         const total = await connection.getRepository('Client').find(findData);
-        const client = await connection.getRepository('Client').find(findData, { take, skip: take * (pagination - 1) });
+        const client = await connection.getRepository('Client').find({ relations: ['address'], findData, take, skip: take * (pagination - 1) });
 
         return {
             page: pagination,
-            allUsers: total.length,
+            allClients: total.length,
             data: client
         };
     },

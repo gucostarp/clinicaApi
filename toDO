@@ -1,20 +1,13 @@
--Implementar Redis (middleware);
+OK-Implementar Redis (middleware);
 
--Analisar internacionalização erros;
+OK-Analisar internacionalização erros;
 
--Testes Front-end: https://www.cypress.io/;
+OK-Paginação
 
--Testes Back-end: Jest;
+OK-Validação de dados CPF/CNPJ Validator
 
--x-frame options;
-
--Paginação
-
--Validação de dados CPF/CNPJ Validator
+OK-Swagger
 
 -Header Validation
 
--Swagger
-
-
--Corrigir campos CPF e Tel Migrations
+-x-frame options;

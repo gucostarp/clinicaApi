@@ -219,7 +219,7 @@
                 "tags": [
                     "Users"
                 ],
-                "summary": "Delete do sistema um usuário",
+                "summary": "Deleta do sistema um usuário",
                 "description": "Deleta um usuário do sistema que foi selecionado pelo ID",
                 "operationId": "delete",
                 "parameters": [{
@@ -896,7 +896,7 @@
         "/occupations": {
             "post": {
                 "tags": [
-                    "Profession"
+                    "Occupation"
                 ],
                 "summary": "Adiciona uma nova profissão",
                 "description": "Cadastre uma nova proifssão para que possa ser possível relacionar ao especialista",
@@ -909,7 +909,7 @@
                 ],
                 "parameters": [{
                     "in": "body",
-                    "name": "Profession",
+                    "name": "Occupation",
                     "description": "Dados da profissão a ser cadastrada",
                     "schema": {
                         "type": "object",
@@ -937,7 +937,7 @@
             },
             "get": {
                 "tags": [
-                    "Profession"
+                    "Occupation"
                 ],
                 "summary": "Lista de profissões",
                 "description": "Lista todas as profissiões cadastradas anteriormente",
@@ -950,7 +950,7 @@
                 ],
                 "parameters": [{
                     "in": "body",
-                    "name": "Profession",
+                    "name": "Occupation",
                     "description": "Dados das profissão a serem exibidas",
                     "schema": {
                         "type": "object",
@@ -977,9 +977,9 @@
         },
         "/occupations/{id}": {
             "put": {
-                "name": "Profession",
+                "name": "Occupation",
                 "tags": [
-                    "Profession"
+                    "Occupation"
                 ],
                 "summary": "Atualiza os dados da profissão",
                 "description": "Atualiza os dados da profissão selecionada pelo ID",
@@ -997,7 +997,7 @@
                     },
                     {
                         "in": "body",
-                        "name": "Profession",
+                        "name": "Occupation",
                         "description": "Dados da profissão a ser alterada",
                         "schema": {
                             "type": "object",
@@ -1026,9 +1026,9 @@
                 }
             },
             "get": {
-                "name": "Profession",
+                "name": "Occupation",
                 "tags": [
-                    "Profession"
+                    "Occupation"
                 ],
                 "summary": "Retorna os dados de um especialista cadastrado",
                 "description": "Retorna os dados de um especialista específico selecionado pelo ID",
@@ -1046,7 +1046,7 @@
                     },
                     {
                         "in": "body",
-                        "name": "Profession",
+                        "name": "Occupation",
                         "description": "Dados da profissão a ser exibida",
                         "schema": {
                             "type": "object",
@@ -1075,9 +1075,9 @@
                 }
             },
             "delete": {
-                "name": "Profession",
+                "name": "Occupation",
                 "tags": [
-                    "Profession"
+                    "Occupation"
                 ],
                 "summary": "Deleta do sistema uma profissão",
                 "description": "Deleta uma profissão especifica do sistema",
@@ -1089,7 +1089,7 @@
                     },
                     {
                         "in": "body",
-                        "name": "Profession",
+                        "name": "Occupation",
                         "description": "Dados da profissão a ser deletada",
                         "schema": {
                             "type": "object",
@@ -2070,7 +2070,7 @@
                 },
                 "occupation": {
                     "type": "string",
-                    "target": "Profession"
+                    "target": "Occupation"
                 }
             },
             "xml": {
@@ -2094,7 +2094,7 @@
                 }
             },
             "xml": {
-                "name": "Profession"
+                "name": "Occupation"
             }
         },
         "attendances": {

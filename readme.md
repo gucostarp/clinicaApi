@@ -64,7 +64,7 @@ Execute a aplicação:
 ```
 yarn dev
 ```
-Pronto, agora é possível acessar a aplicação a partir da rota http://localhost:3000/
+Pronto, agora é possível acessar a aplicação a partir da rota http://localhost:3000/ ou, se desejar, acesse o deploy pelo link https://clinicaapi.herokuapp.com.
 
 
 ## 🛠️ Construído com

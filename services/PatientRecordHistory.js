@@ -7,7 +7,7 @@ module.exports = {
 
         const take = 10;
         const pagination = !pages.page ? 1 : parseInt(pages.page);
-        const total = await connection.getRepository('PatientRecordHistory').find({ relations: ['specialist', 'patientRecord'] });
+        const total = await connection.getRepository('PatientRecordHistory').find();
         const patientRecords = await connection.getRepository('PatientRecordHistory').find({ relations: ['specialist', 'patientRecord'], take, skip: take * (pagination - 1) });
 
         return {

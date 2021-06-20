@@ -12,7 +12,7 @@ module.exports = {
 
         return {
             page: pagination,
-            allUsers: total.length,
+            allOccupations: total.length,
             data: occupations
         };
     },
