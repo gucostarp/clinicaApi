@@ -31,12 +31,10 @@ module.exports = {
         const connection = getConnection();
 
         const repository = await connection.getRepository('Specialist');
-        const occupationUpdate = { occupation: data.occupation }
-        const specialistUpdate = await connection.getRepository('Specialist').findOne(id, { relations: ['address', 'occupation'] })
-        repository.merge(specialistUpdate, fields)
-        await repository.save(specialistUpdate);
-        await repository.update(id, occupationUpdate);
-        const result = await repository.findOne(id, { relations: ['address', 'occupation'] });
+        const specialist = await repository.findOne(id, { relations: ['address', 'occupation'] })
+        repository.merge(specialist, fields)
+        const result = await repository.save(specialist);
+
         return result;
     },
 

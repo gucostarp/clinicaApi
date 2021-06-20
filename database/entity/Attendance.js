@@ -1,6 +1,5 @@
 const { EntitySchema } = require('typeorm');
 
-
 module.exports = new EntitySchema({
     name: 'Attendance',
     columns: {
@@ -43,6 +42,7 @@ module.exports = new EntitySchema({
             type: 'many-to-one',
             target: 'Client',
             cascade: false,
+
         },
     },
 

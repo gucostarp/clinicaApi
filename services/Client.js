@@ -29,8 +29,13 @@ module.exports = {
     async update(id, fields) {
         const connection = getConnection();
 
-        await connection.getRepository('Client').update(id, fields);
-        return getClient(id);
+        const repository = await connection.getRepository('Client');
+        const client = await repository.findOne(id, { relations: ['address'] });
+        repository.merge(client, fields)
+        const result = await repository.save(client)
+        return result;
+
+
     },
 
     async delete(id) {

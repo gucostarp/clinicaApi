@@ -52,7 +52,6 @@ const insert = async(req, res) => {
     }
 };
 
-
 module.exports = {
     get,
     getOne,
