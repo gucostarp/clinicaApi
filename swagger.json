@@ -4,7 +4,7 @@
         "description": "Aplicação API para a Clinica Superação",
         "title": "Clinica Superação",
         "contact": {
-            "email": "contato@clinicasuperacao.com.br"
+            "eemail": "contato@clinicasuperacao.com.br"
         }
     },
     "host": "https://clinicaapi.herokuapp.com",
@@ -137,7 +137,7 @@
                                 "name": {
                                     "type": "string"
                                 },
-                                "login": {
+                                "username": {
                                     "type": "string",
                                     "minimum": "6",
                                     "maximum": "20"
@@ -192,7 +192,7 @@
                                 "name": {
                                     "type": "string"
                                 },
-                                "login": {
+                                "username": {
                                     "type": "string",
                                     "minimum": "6",
                                     "maximum": "20"
@@ -241,7 +241,7 @@
                                 "name": {
                                     "type": "string"
                                 },
-                                "login": {
+                                "username": {
                                     "type": "string",
                                     "minimum": "6",
                                     "maximum": "20"
@@ -271,7 +271,7 @@
                 ],
                 "summary": "Adiciona um novo cliente",
                 "description": "Cadastre um novo cliente para que possa ser possível fazer agendamentos.",
-                "operationId": "insertClient",
+                "operationId": "insert",
                 "consumes": [
                     "application/json"
                 ],
@@ -284,7 +284,7 @@
                     "description": "Dados do cliente a ser cadastrado",
                     "schema": {
                         "type": "object",
-                        "required": ["name", "cpf", "phone", "mail"],
+                        "required": ["name", "cpf", "phone", "email"],
                         "properties": {
                             "name": {
                                 "type": "string",
@@ -304,7 +304,7 @@
                                 "type": "string",
                                 "maximum": "14"
                             },
-                            "mail": {
+                            "email": {
                                 "type": "string",
                                 "maximum": "255",
                                 "unique": "true"
@@ -334,7 +334,7 @@
                 ],
                 "summary": "Lista todos os clientes cadastrados",
                 "description": "Faz uma lista que contém todos os clientes que já foram cadastrados no sistema",
-                "operationId": "getClient",
+                "operationId": "list",
                 "consumes": [
                     "application/json"
                 ],
@@ -347,7 +347,7 @@
                     "description": "Dados dos clientes a serem listados",
                     "schema": {
                         "type": "object",
-                        "required": ["name", "cpf", "phone", "mail"],
+                        "required": ["name", "cpf", "phone", "email"],
                         "properties": {
                             "name": {
                                 "type": "string"
@@ -365,7 +365,7 @@
                                 "type": "string",
                                 "maximum": "14"
                             },
-                            "mail": {
+                            "email": {
                                 "type": "string"
                             },
                             "bloodtype": {
@@ -396,7 +396,7 @@
                 ],
                 "summary": "Atualiza os dados do cliente",
                 "description": "Atualiza os dados de um cliente específico selecionado pelo ID",
-                "operationId": "updateClient",
+                "operationId": "update",
                 "consumes": [
                     "application/json"
                 ],
@@ -432,7 +432,7 @@
                                     "type": "string",
                                     "maximum": "14"
                                 },
-                                "mail": {
+                                "email": {
                                     "type": "string"
                                 },
                                 "bloodtype": {
@@ -462,7 +462,7 @@
                 ],
                 "summary": "Retorna os dados de um cliente cadastrado",
                 "description": "Retorna os dados de um cliente específico selecionado pelo ID",
-                "operationId": "getOneClient",
+                "operationId": "list",
                 "consumes": [
                     "application/json"
                 ],
@@ -498,7 +498,7 @@
                                     "type": "string",
                                     "maximum": "14"
                                 },
-                                "mail": {
+                                "email": {
                                     "type": "string"
                                 },
                                 "bloodtype": {
@@ -528,7 +528,7 @@
                 ],
                 "summary": "Deleta do sistema um cliente",
                 "description": "Deleta um cliente do sistema que foi selecionado pelo ID",
-                "operationId": "removeClient",
+                "operationId": "remove",
                 "parameters": [{
                         "in": "path",
                         "description": "Id do cliente a ser deletado",
@@ -558,7 +558,7 @@
                                     "type": "string",
                                     "maximum": "14"
                                 },
-                                "mail": {
+                                "email": {
                                     "type": "string"
                                 },
                                 "bloodtype": {
@@ -589,7 +589,7 @@
                 ],
                 "summary": "Adiciona um novo especialista",
                 "description": "Cadastre um novo especialista para que possa ser possível marcar consultas e exames relacionados ao mesmo",
-                "operationId": "insertSpecialist",
+                "operationId": "insert",
                 "consumes": [
                     "application/json"
                 ],
@@ -602,9 +602,9 @@
                     "description": "Dados do especialista a ser cadastrado",
                     "schema": {
                         "type": "object",
-                        "required": ["name", "register", "cellphone", "mail", "profession", "adress"],
+                        "required": ["name", "registry", "cellphone", "email", "occupation", "adress"],
                         "properties": {
-                            "register": {
+                            "registry": {
                                 "name": {
                                     "type": "string"
                                 },
@@ -620,11 +620,11 @@
                                 "type": "string",
                                 "maximum": "14"
                             },
-                            "mail": {
+                            "email": {
                                 "type": "string",
                                 "unique": "true"
                             },
-                            "profession": {
+                            "occupation": {
                                 "type": "string"
                             },
                             "address": {
@@ -648,7 +648,7 @@
                 ],
                 "summary": "Lista de especialistas",
                 "description": "Lista todos os especialistas que foram cadastrados no sistema anteriormente",
-                "operationId": "getSpecialist",
+                "operationId": "list",
                 "consumes": [
                     "application/json"
                 ],
@@ -661,12 +661,12 @@
                     "description": "Dados do especialista a serem listados.",
                     "schema": {
                         "type": "object",
-                        "required": ["name", "cpf", "phone", "cellphone", "mail"],
+                        "required": ["name", "cpf", "phone", "cellphone", "email"],
                         "properties": {
                             "name": {
                                 "type": "string"
                             },
-                            "register": {
+                            "registry": {
                                 "type": "string"
                             },
                             "phone": {
@@ -677,13 +677,13 @@
                                 "type": "string",
                                 "maximum": "14"
                             },
-                            "mail": {
+                            "email": {
                                 "type": "string"
                             },
                             "address": {
                                 "type": "string"
                             },
-                            "profession": {
+                            "occupation": {
                                 "type": "string"
                             }
                         }
@@ -707,7 +707,7 @@
                 ],
                 "summary": "Atualiza os dados do especialista",
                 "description": "Atualiza os dados de um especialista específico selecionado pelo ID",
-                "operationId": "updateSpecialist",
+                "operationId": "update",
                 "consumes": [
                     "application/json"
                 ],
@@ -733,7 +733,7 @@
                                 "name": {
                                     "type": "string"
                                 },
-                                "register": {
+                                "registry": {
                                     "type": "string"
                                 },
                                 "phone": {
@@ -744,13 +744,13 @@
                                     "type": "string",
                                     "maximum": "14"
                                 },
-                                "mail": {
+                                "email": {
                                     "type": "string"
                                 },
                                 "address": {
                                     "type": "string"
                                 },
-                                "profession": {
+                                "occupation": {
                                     "type": "string"
                                 }
                             }
@@ -773,7 +773,7 @@
                 ],
                 "summary": "Retorna os dados de um especialista cadastrado",
                 "description": "Retorna os dados de um especialista específico selecionado pelo ID",
-                "operationId": "getOneSpecialist",
+                "operationId": "detail",
                 "consumes": [
                     "application/json"
                 ],
@@ -799,7 +799,7 @@
                                 "name": {
                                     "type": "string"
                                 },
-                                "register": {
+                                "registry": {
                                     "type": "string"
                                 },
                                 "phone": {
@@ -810,13 +810,13 @@
                                     "type": "string",
                                     "maximum": "14"
                                 },
-                                "mail": {
+                                "email": {
                                     "type": "string"
                                 },
                                 "address": {
                                     "type": "string"
                                 },
-                                "profession": {
+                                "occupation": {
                                     "type": "string"
                                 }
                             }
@@ -839,7 +839,7 @@
                 ],
                 "summary": "Deleta do sistema um especialista",
                 "description": "Deleta um especialista do sistema que foi selecionado pelo ID",
-                "operationId": "removeSpecialist",
+                "operationId": "remove",
                 "parameters": [{
                         "in": "path",
                         "description": "Id do especialista a ser deletado",
@@ -859,7 +859,7 @@
                                 "name": {
                                     "type": "string"
                                 },
-                                "register": {
+                                "registry": {
                                     "type": "string"
                                 },
                                 "phone": {
@@ -870,13 +870,13 @@
                                     "type": "string",
                                     "maximum": "14"
                                 },
-                                "mail": {
+                                "email": {
                                     "type": "string"
                                 },
                                 "address": {
                                     "type": "string"
                                 },
-                                "profession": {
+                                "occupation": {
                                     "type": "string"
                                 }
                             }
@@ -893,14 +893,14 @@
                 }
             }
         },
-        "/professions": {
+        "/occupations": {
             "post": {
                 "tags": [
                     "Profession"
                 ],
                 "summary": "Adiciona uma nova profissão",
                 "description": "Cadastre uma nova proifssão para que possa ser possível relacionar ao especialista",
-                "operationId": "insertProfession",
+                "operationId": "insert",
                 "consumes": [
                     "application/json"
                 ],
@@ -941,7 +941,7 @@
                 ],
                 "summary": "Lista de profissões",
                 "description": "Lista todas as profissiões cadastradas anteriormente",
-                "operationId": "getProfession",
+                "operationId": "list",
                 "consumes": [
                     "application/json"
                 ],
@@ -975,7 +975,7 @@
                 }
             }
         },
-        "/professions/{id}": {
+        "/occupations/{id}": {
             "put": {
                 "name": "Profession",
                 "tags": [
@@ -983,7 +983,7 @@
                 ],
                 "summary": "Atualiza os dados da profissão",
                 "description": "Atualiza os dados da profissão selecionada pelo ID",
-                "operationId": "updateProfession",
+                "operationId": "update",
                 "consumes": [
                     "application/json"
                 ],
@@ -1032,7 +1032,7 @@
                 ],
                 "summary": "Retorna os dados de um especialista cadastrado",
                 "description": "Retorna os dados de um especialista específico selecionado pelo ID",
-                "operationId": "getOneSpecialist",
+                "operationId": "detail",
                 "consumes": [
                     "application/json"
                 ],
@@ -1081,7 +1081,7 @@
                 ],
                 "summary": "Deleta do sistema uma profissão",
                 "description": "Deleta uma profissão especifica do sistema",
-                "operationId": "removeProfession",
+                "operationId": "remove",
                 "parameters": [{
                         "in": "path",
                         "description": "Id da profissão a ser deletada",
@@ -1125,7 +1125,7 @@
                 ],
                 "summary": "Adiciona um novo atendimento",
                 "description": "Cadastre um novo atendimento",
-                "operationId": "insertAttendance",
+                "operationId": "insert",
                 "consumes": [
                     "application/json"
                 ],
@@ -1184,7 +1184,7 @@
                     "Attendance"
                 ],
                 "summary": "Lista todos os atendimentos cadastrados",
-                "operationId": "listAttendance",
+                "operationId": "list",
                 "description": "Faz uma lista que contém todos os atendimentos que já foram cadastrados no sistema",
                 "consumes": [
                     "application/json"
@@ -1248,7 +1248,7 @@
                 ],
                 "summary": "Atualiza os dados do atendimento",
                 "description": "Atualiza os dados de um atendimento específico selecionado pelo ID",
-                "operationId": "updateAttendance",
+                "operationId": "update",
                 "consumes": [
                     "application/json"
                 ],
@@ -1316,7 +1316,7 @@
                 ],
                 "summary": "Retorna os dados de um atendimento cadastrado",
                 "description": "Retorna os dados de um atendimento específico selecionado pelo ID",
-                "operationId": "getOneAttendance",
+                "operationId": "detail",
                 "consumes": [
                     "application/json"
                 ],
@@ -1384,7 +1384,7 @@
                 ],
                 "summary": "Delete do sistema um atendimento",
                 "description": "Deleta um atendimento do sistema que foi selecionado pelo ID",
-                "operationId": "removeAttendance",
+                "operationId": "remove",
                 "parameters": [{
                         "in": "path",
                         "description": "Id do atendimento a ser deletado",
@@ -1443,11 +1443,11 @@
         "/medical-records": {
             "post": {
                 "tags": [
-                    "Medical Record"
+                    "Patient Record"
                 ],
                 "summary": "Adiciona um novo prontuário",
                 "description": "Cadastre um novo prontuário para lhe liberar permissões de cadastros, consultas e alterações",
-                "operationId": "insertMedicalRecord",
+                "operationId": "insert",
                 "consumes": [
                     "application/json"
                 ],
@@ -1456,7 +1456,7 @@
                 ],
                 "parameters": [{
                     "in": "body",
-                    "name": "MedicalRecord",
+                    "name": "PatientRecord",
                     "description": "Dados do prontuário a ser cadastrado",
                     "schema": {
                         "type": "object",
@@ -1469,7 +1469,7 @@
                             "client": {
                                 "type": "string"
                             },
-                            "medicalRecordHistories": {
+                            "patientRecordHistories": {
                                 "type": "string"
                             }
                         }
@@ -1486,10 +1486,10 @@
             },
             "get": {
                 "tags": [
-                    "Medical Record"
+                    "Patient Record"
                 ],
                 "summary": "Lista todos os prontuários cadastrados",
-                "operationId": "getMedicalRecord",
+                "operationId": "list",
                 "description": "Faz uma lista que contém todos os prontuário que já foram cadastrados no sistema",
                 "consumes": [
                     "application/json"
@@ -1499,7 +1499,7 @@
                 ],
                 "parameters": [{
                     "in": "body",
-                    "name": "MedicalRecord",
+                    "name": "PatientRecord",
                     "description": "Dados dos prontuários a serem exibidos",
                     "schema": {
                         "type": "object",
@@ -1512,7 +1512,7 @@
                             "client": {
                                 "type": "string"
                             },
-                            "medicalRecordHistories": {
+                            "patientRecordHistories": {
                                 "type": "string"
                             }
                         }
@@ -1530,13 +1530,13 @@
         },
         "/medical-records/{id}": {
             "put": {
-                "name": "MedicalRecord",
+                "name": "PatientRecord",
                 "tags": [
-                    "Medical Record"
+                    "Patient Record"
                 ],
                 "summary": "Atualiza os dados do prontuário",
                 "description": "Atualiza os dados de um prontuário específico selecionado pelo ID",
-                "operationId": "updateMedicalRecord",
+                "operationId": "update",
                 "consumes": [
                     "application/json"
                 ],
@@ -1550,7 +1550,7 @@
                     },
                     {
                         "in": "body",
-                        "name": "MedicalRecord",
+                        "name": "PatientRecord",
                         "description": "Dados do prontuário a ser alterado",
                         "schema": {
                             "type": "object",
@@ -1566,7 +1566,7 @@
                                 "client": {
                                     "type": "string"
                                 },
-                                "medicalRecordHistories": {
+                                "patientRecordHistories": {
                                     "type": "string"
                                 }
                             }
@@ -1583,13 +1583,13 @@
                 }
             },
             "get": {
-                "name": "MedicalRecord",
+                "name": "PatientRecord",
                 "tags": [
-                    "Medical Record"
+                    "Patient Record"
                 ],
                 "summary": "Retorna os dados de um prontuário cadastrado",
                 "description": "Retorna os dados de um prontuário específico selecionado pelo ID",
-                "operationId": "getOneMedicalRecord",
+                "operationId": "detail",
                 "consumes": [
                     "application/json"
                 ],
@@ -1603,7 +1603,7 @@
                     },
                     {
                         "in": "body",
-                        "name": "MedicalRecord",
+                        "name": "PatientRecord",
                         "description": "Dados do prontuário a ser exíbido",
                         "schema": {
                             "type": "object",
@@ -1619,7 +1619,7 @@
                                 "client": {
                                     "type": "string"
                                 },
-                                "medicalRecordHistories": {
+                                "patientRecordHistories": {
                                     "type": "string"
                                 }
                             }
@@ -1636,13 +1636,13 @@
                 }
             },
             "delete": {
-                "name": "MedicalRecord",
+                "name": "PatientRecord",
                 "tags": [
-                    "Medical Record"
+                    "Patient Record"
                 ],
                 "summary": "Delete do sistema um prontuário",
                 "description": "Deleta um prontuário do sistema que foi selecionado pelo ID",
-                "operationId": "removeMedicalRecord",
+                "operationId": "remove",
                 "parameters": [{
                         "in": "path",
                         "description": "Id do prontuário a ser deletado",
@@ -1650,7 +1650,7 @@
                     },
                     {
                         "in": "body",
-                        "name": "MedicalRecord",
+                        "name": "PatientRecord",
                         "description": "Dados do prontuário a ser deletado",
                         "schema": {
                             "type": "object",
@@ -1666,7 +1666,7 @@
                                 "client": {
                                     "type": "string"
                                 },
-                                "medicalRecordHistories": {
+                                "patientRecordHistories": {
                                     "type": "string"
                                 }
                             }
@@ -1686,10 +1686,10 @@
         "/medical-record-histories": {
             "post": {
                 "tags": [
-                    "Medical Record History"
+                    "Patient Record History"
                 ],
                 "summary": "Adiciona um novo prontuário se tiver histórico",
-                "operationId": "insertMedicalRecordHistories",
+                "operationId": "insert",
                 "consumes": [
                     "application/json"
                 ],
@@ -1698,7 +1698,7 @@
                 ],
                 "parameters": [{
                     "in": "body",
-                    "name": "MedicalRecordHistory",
+                    "name": "PatientRecordHistory",
                     "description": "Dados do histórico de prontuário a ser cadastrado",
                     "schema": {
                         "type": "object",
@@ -1711,7 +1711,7 @@
                             "client": {
                                 "type": "string"
                             },
-                            "medicalRecordHistories": {
+                            "patientRecordHistories": {
                                 "type": "string"
                             }
                         }
@@ -1728,10 +1728,10 @@
             },
             "get": {
                 "tags": [
-                    "Medical Record History"
+                    "Patient Record History"
                 ],
                 "summary": "Lista o histórico de prontuário.",
-                "operationId": "getMedicalRecordHistory",
+                "operationId": "list",
                 "description": "Faz uma lista que contém todos os prontuários que já foram concluídos anteriormente",
                 "consumes": [
                     "application/json"
@@ -1741,7 +1741,7 @@
                 ],
                 "parameters": [{
                     "in": "body",
-                    "name": "MedicalRecordHistory",
+                    "name": "PatientRecordHistory",
                     "description": "Dados do histórico de prontuário a ser exibidos",
                     "schema": {
                         "type": "object",
@@ -1759,7 +1759,7 @@
                                 "type": "string",
                                 "maximum": "255"
                             },
-                            "medicalRecords": {
+                            "patientRecords": {
                                 "type": "string"
                             },
                             "specialist": {
@@ -1780,13 +1780,13 @@
         },
         "/medical-record-histories/{id}": {
             "put": {
-                "name": "MedicalRecordHistory",
+                "name": "PatientRecordHistory",
                 "tags": [
-                    "Medical Record History"
+                    "Patient Record History"
                 ],
                 "summary": "Atualiza os dados do histórico de prontuário",
                 "description": "Atualiza os dados de um dado de histórico específico selecionado pelo ID",
-                "operationId": "updateMedicalRecordHistories",
+                "operationId": "update",
                 "consumes": [
                     "application/json"
                 ],
@@ -1800,7 +1800,7 @@
                     },
                     {
                         "in": "body",
-                        "name": "MedicalRecordHistory",
+                        "name": "PatientRecordHistory",
                         "description": "Dados do histórico a ser alterado",
                         "schema": {
                             "type": "object",
@@ -1821,7 +1821,7 @@
                                     "type": "string",
                                     "maximum": "255"
                                 },
-                                "medicalRecords": {
+                                "patientRecords": {
                                     "type": "string"
                                 },
                                 "specialist": {
@@ -1841,13 +1841,13 @@
                 }
             },
             "get": {
-                "name": "MedicalRecordHistory",
+                "name": "PatientRecordHistory",
                 "tags": [
-                    "Medical Record History"
+                    "Patient Record History"
                 ],
                 "summary": "Retorna os dados de um histórico de prontuário",
                 "description": "Retorna os dados de um histórico de prontuário específico selecionado pelo ID",
-                "operationId": "getOneMedicalRecordHistories",
+                "operationId": "detail",
                 "consumes": [
                     "application/json"
                 ],
@@ -1861,7 +1861,7 @@
                     },
                     {
                         "in": "body",
-                        "name": "MedicalRecord",
+                        "name": "PatientRecord",
                         "description": "Dados do histórico a ser alterado",
                         "schema": {
                             "type": "object",
@@ -1877,7 +1877,7 @@
                                 "client": {
                                     "type": "string"
                                 },
-                                "medicalRecordHistories": {
+                                "patientRecordHistories": {
                                     "type": "string"
                                 }
                             }
@@ -1894,13 +1894,13 @@
                 }
             },
             "delete": {
-                "name": "MedicalRecordHistory",
+                "name": "PatientRecordHistory",
                 "tags": [
-                    "Medical Record History"
+                    "Patient Record History"
                 ],
                 "summary": "Delete do sistema um prontuário",
                 "description": "Deleta um prontuário do sistema que foi selecionado pelo ID",
-                "operationId": "removeMedicalRecordHistories",
+                "operationId": "remove",
                 "parameters": [{
                         "in": "path",
                         "description": "Id do histórico a ser deletado",
@@ -1908,7 +1908,7 @@
                     },
                     {
                         "in": "body",
-                        "name": "MedicalRecordHistory",
+                        "name": "PatientRecordHistory",
                         "description": "Dados do histórico a ser excluído",
                         "schema": {
                             "type": "object",
@@ -1924,7 +1924,7 @@
                                 "client": {
                                     "type": "string"
                                 },
-                                "medicalRecordHistories": {
+                                "patientRecordHistories": {
                                     "type": "string"
                                 }
                             }
@@ -1959,10 +1959,10 @@
         }
     },
     "definitions": {
-        "login": {
+        "username": {
             "type": "object",
             "properties": {
-                "login": {
+                "username": {
                     "type": "string",
                     "unique": "true"
                 },
@@ -1971,7 +1971,7 @@
                 }
             }
         },
-        "usuarios": {
+        "users": {
             "type": "object",
             "properties": {
                 "id": {
@@ -1981,7 +1981,7 @@
                 "name": {
                     "type": "string"
                 },
-                "login": {
+                "username": {
                     "type": "string",
                     "unique": "true"
                 },
@@ -1993,7 +1993,7 @@
                 "name": "User"
             }
         },
-        "clientes": {
+        "clients": {
             "type": "object",
             "properties": {
                 "id": {
@@ -2016,7 +2016,7 @@
                     "type": "string",
                     "maximum": "14"
                 },
-                "mail": {
+                "email": {
                     "type": "string",
                     "maximum": "255",
                     "unique": "true"
@@ -2035,14 +2035,14 @@
                 "name": "Client"
             }
         },
-        "especialistas": {
+        "specialists": {
             "type": "object",
             "properties": {
                 "id": {
                     "type": "integer",
                     "format": "int64"
                 },
-                "register": {
+                "registry": {
                     "type": "string",
                     "maximum": "100",
                     "unique": "true"
@@ -2059,7 +2059,7 @@
                     "type": "string",
                     "maximum": "14"
                 },
-                "mail": {
+                "email": {
                     "type": "string",
                     "maximum": "50",
                     "unique": "true"
@@ -2068,7 +2068,7 @@
                     "type": "string",
                     "target": "Address"
                 },
-                "profession": {
+                "occupation": {
                     "type": "string",
                     "target": "Profession"
                 }
@@ -2077,7 +2077,7 @@
                 "name": "Specialist"
             }
         },
-        "profissoes": {
+        "occupations": {
             "type": "object",
             "properties": {
                 "id": {
@@ -2097,7 +2097,7 @@
                 "name": "Profession"
             }
         },
-        "atendimentos": {
+        "attendances": {
             "type": "object",
             "properties": {
                 "id": {
@@ -2142,7 +2142,7 @@
                 "name": "Attendance"
             }
         },
-        "prontuarios": {
+        "patientRecord": {
             "type": "object",
             "properties": {
                 "id": {
@@ -2157,16 +2157,16 @@
                     "type": "string",
                     "target": "Client"
                 },
-                "medicalRecordHistories": {
+                "patientRecordHistories": {
                     "type": "string",
-                    "target": "MedicalRecordHistory"
+                    "target": "PatientRecordHistory"
                 }
             },
             "xml": {
-                "name": "MedicalRecord"
+                "name": "PatientRecord"
             }
         },
-        "enderecos": {
+        "address": {
             "type": "object",
             "properties": {
                 "id": {
@@ -2198,7 +2198,7 @@
                 "name": "Address"
             }
         },
-        "historicos_prontuario": {
+        "patientMedicalHistory": {
             "type": "object",
             "properties": {
                 "id": {
@@ -2217,9 +2217,9 @@
                     "type": "string",
                     "maximum": "255"
                 },
-                "medicalRecords": {
+                "patientRecords": {
                     "type": "string",
-                    "target": "MedicalRecord"
+                    "target": "PatientRecord"
                 },
                 "specialist": {
                     "type": "string",

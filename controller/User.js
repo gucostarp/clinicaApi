@@ -1,8 +1,6 @@
 const repository = require('../services/User')
 const { getRepository } = require('typeorm');
 
-
-
 get = async(req, res) => {
 
     try {
@@ -14,7 +12,6 @@ get = async(req, res) => {
         res.status(400).json({ message: 'Error listing users.' });
     }
 };
-
 
 getOne = async(req, res) => {
 
