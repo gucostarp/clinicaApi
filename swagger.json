@@ -57,7 +57,7 @@
                         "description": "Requisição realizada com sucesso."
                     },
                     "401": {
-                        "description": "Erro ao cadastrar."
+                        "description": "Erro ao inserir usuário."
                     }
                 }
             },
@@ -98,7 +98,7 @@
                         "description": "Requisição realizada com sucesso."
                     },
                     "401": {
-                        "description": "Erro ao listar."
+                        "description": "Erro ao listar usuários."
                     }
                 }
             }

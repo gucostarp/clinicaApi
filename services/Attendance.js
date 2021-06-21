@@ -17,7 +17,6 @@ module.exports = {
             allAttendances: total.length,
             data: attendance
         };
-
     },
 
     async detail(id) {

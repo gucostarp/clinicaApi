@@ -14,7 +14,7 @@ module.exports = new EntitySchema({
         },
         attendance_date: {
             type: 'date',
-            nullable: false,
+            nullable: true,
         },
         hour: {
             type: 'time',
