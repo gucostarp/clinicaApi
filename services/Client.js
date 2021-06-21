@@ -40,7 +40,7 @@ module.exports = {
         const connection = getConnection();
 
         await connection.getRepository('Client').delete(id);
-        return { message: 'Client excluído' };
+        return { message: req.t('client_deleted') };
     },
 
     async insert(client) {

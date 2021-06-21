@@ -40,7 +40,7 @@ module.exports = {
 
         await connection.getRepository('User').update(id, fields2);
 
-        const updatedUser = getUser(id);
+        const updatedUser = detail(id);
         delete updatedUser.password;
 
         return updatedUser;
@@ -50,7 +50,7 @@ module.exports = {
         const connection = getConnection();
 
         await connection.getRepository('User').delete(id);
-        return { message: 'Usuário excluído' };
+        return { message: req.t('user_deleted') };
     },
 
     async insert(user) {

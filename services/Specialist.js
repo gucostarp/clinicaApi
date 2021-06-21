@@ -42,7 +42,8 @@ module.exports = {
         const connection = getConnection();
 
         await connection.getRepository('Specialist').delete(id);
-        return { message: 'Specialist excluído' };
+        return { message: req.t('specialist_deleted') };
+
     },
 
     async insert(data) {

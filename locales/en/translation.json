@@ -9,6 +9,7 @@
     "user_uptading_error": "Error updating user.",
     "user_deleting_error": "Error deleting user.",
     "user_list_error": "Error listing user.",
+    "user_deleted": "User deleted.",
 
     "client_create_error": "Error creating client.",
     "client_uptading_error": "Error updating client.",
@@ -17,30 +18,37 @@
     "client_cpf_validate": "Invalid CPF",
     "client_cpf_duplicate": "CPF already registered.",
     "client_email_duplicate": "Email already registered.",
+    "client_deleted": "Client deleted.",
 
     "attendance_create_error": "Error creating attendance.",
     "attendance_uptading_error": "Error updating attendance.",
     "attendance_deleting_error": "Error deleting attendance.",
     "attendance_list_error": "Error listing attendance.",
+    "attendance_deleted": "Attendance deleted.",
 
     "occupation_create_error": "Error creating occupation.",
     "occupation_uptading_error": "Error updating occupation.",
     "occupation_deleting_error": "Error deleting occupation.",
     "occupation_list_error": "Error listing occupation.",
+    "occupation_deleted": "Occupation deleted.",
 
     "patient_record_create_error": "Error creating patient record.",
     "patient_record_uptading_error": "Error updating patient record.",
     "patient_record_deleting_error": "Error deleting patient record.",
     "patient_record_list_error": "Error listing patient record.",
+    "patient_record_deleted": "Patient record deleted.",
 
     "pat_record_history_create_error": "Error creating patient record history.",
     "pat_record_history_uptading_error": "Error updating patient record history.",
     "pat_record_history_deleting_error": "Error deleting patient record history.",
     "pat_record_history_list_error": "Error listing patient record history.",
+    "pat_record_history_deleted": "Patient record history deleted.",
 
     "specialist_create_error": "Error creating specialist.",
     "specialist_uptading_error": "Error updating specialist.",
     "specialist_deleting_error": "Error deleting specialist.",
-    "specialist_list_error": "Error listing specialist."
+    "specialist_list_error": "Error listing specialist.",
+    "specialist_deleted": "Specialist deleted."
+
 
 }

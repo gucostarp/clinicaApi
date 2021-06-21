@@ -35,7 +35,7 @@ module.exports = {
         const connection = getConnection();
 
         await connection.getRepository('PatientRecordHistory').delete(id);
-        return { message: 'PatientRecordHistory excluído' };
+        return { message: req.t('pat_record_history_deleted') };
     },
 
     async insert(patientRecord) {

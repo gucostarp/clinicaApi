@@ -9,6 +9,7 @@
     "user_uptading_error": "Erro ao atualizar usuário.",
     "user_deleting_error": "Erro ao deletar usuário.",
     "user_list_error": "Erro ao listar usuário.",
+    "user_deleted": "Usuário excluído.",
 
     "client_create_error": "Erro ao inserir cliente.",
     "client_uptading_error": "Erro ao atualizar cliente.",
@@ -17,30 +18,36 @@
     "client_cpf_validate": "CPF inválido.",
     "client_cpf_duplicate": "CPF já cadastrado.",
     "client_email_duplicate": "Email já cadastrado.",
+    "client_deleted": "Cliente excluído.",
 
     "attendance_create_error": "Erro ao inserir atendimento.",
     "attendance_uptading_error": "Erro ao atualizar atendimento.",
     "attendance_deleting_error": "Erro ao deletar atendimento.",
     "attendance_list_error": "Erro ao listar atendimento.",
+    "attendance_deleted": "Atendimento excluído.",
 
     "occupation_create_error": "Erro ao inserir profissão.",
     "occupation_uptading_error": "Erro ao atualizar profissão.",
     "occupation_deleting_error": "Erro ao deletar profissão.",
     "occupation_list_error": "Erro ao listar profissão.",
+    "occupation_deleted": "Profissão excluída.",
 
     "patient_record_create_error": "Erro ao inserir prontuário.",
     "patient_record_uptading_error": "Erro ao atualizar prontuário.",
     "patient_record_deleting_error": "Erro ao deletar prontuário.",
     "patient_record_list_error": "Erro ao listar prontuário.",
+    "patient_record_deleted": "Prontuário excluído.",
 
     "pat_record_history_create_error": "Erro ao inserir histórico do prontuário.",
     "pat_record_history_uptading_error": "Erro ao atualizar histórico do prontuário.",
     "pat_record_history_deleting_error": "Erro ao deletar histórico do prontuário.",
     "pat_record_history_list_error": "Erro ao listar histórico do prontuário.",
+    "pat_record_history_deleted": "Histórico de prontuário excluído.",
 
     "specialist_create_error": "Erro ao inserir especialista.",
     "specialist_uptading_error": "Erro ao atualizar especialista.",
     "specialist_deleting_error": "Erro ao deletar especialista.",
-    "specialist_list_error": "Erro ao listar especialista."
+    "specialist_list_error": "Erro ao listar especialista.",
+    "specialist_deleted": "Especialista excluído."
 
 }

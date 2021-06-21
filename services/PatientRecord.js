@@ -39,7 +39,7 @@ module.exports = {
         const connection = getConnection();
 
         await connection.getRepository('PatientRecord').delete(id);
-        return { message: 'PatientRecord excluído' };
+        return { message: req.t('patient_record_deleted') };
     },
 
     async insert(patientRecord) {

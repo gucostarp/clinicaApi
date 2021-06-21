@@ -35,7 +35,7 @@ module.exports = {
         const connection = getConnection();
 
         await connection.getRepository('Occupation').delete(id);
-        return { message: 'Occupation excluído' };
+        return { message: req.t('occupation_deleted') };
     },
 
     async insert(profissao) {

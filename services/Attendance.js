@@ -38,7 +38,7 @@ module.exports = {
         const connection = getConnection();
 
         await connection.getRepository('Attendance').delete(id);
-        return { message: 'Attendance deleted' };
+        return { message: req.t('attendance_deleted') };
     },
 
     async insert(attendance) {
