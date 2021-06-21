@@ -8,7 +8,7 @@ module.exports = {
         const take = 10;
         const pagination = !pages.page ? 1 : parseInt(pages.page);
         const total = await connection.getRepository('Occupation').find(data);
-        const occupations = await connection.getRepository('Occupation').find({ take, skip: take * (pagination - 1) });
+        const occupations = await connection.getRepository('Occupation').find({ take, skip: take * (pagination - 1), order: { name: "ASC" } });
 
         return {
             page: pagination,
@@ -20,7 +20,7 @@ module.exports = {
     async detail(id) {
         const connection = getConnection();
 
-        const specialist = await connection.getRepository('Occupation').findOne(id);
+        const specialist = await connection.getRepository('Occupation').findOne({ id, order: { name: "ASC" } });
         return (specialist);
     },
 

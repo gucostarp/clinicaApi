@@ -10,7 +10,7 @@ module.exports = {
         const take = 10;
         const pagination = !pages.page ? 1 : parseInt(pages.page);
         const total = await connection.getRepository('Client').find(findData);
-        const client = await connection.getRepository('Client').find({ relations: ['address'], findData, take, skip: take * (pagination - 1) });
+        const client = await connection.getRepository('Client').find({ relations: ['address'], findData, take, skip: take * (pagination - 1), order: { name: "ASC" } });
 
         return {
             page: pagination,
@@ -22,7 +22,7 @@ module.exports = {
     async detail(id) {
         const connection = getConnection();
 
-        const client = await connection.getRepository('Client').findOne(id, { relations: ['address'] });
+        const client = await connection.getRepository('Client').findOne({ id, relations: ['address'], order: { name: "ASC" } });
         return client;
     },
 
@@ -30,7 +30,7 @@ module.exports = {
         const connection = getConnection();
 
         const repository = await connection.getRepository('Client');
-        const client = await repository.findOne(id, { relations: ['address'] });
+        const client = await repository.findOne({ id, relations: ['address'], order: { name: "ASC" } });
         repository.merge(client, fields)
         const result = await repository.save(client)
         return result;
